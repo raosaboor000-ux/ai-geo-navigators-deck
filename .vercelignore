@@ -1,0 +1,12 @@
+# Keep deploy small: only AI_Geo_Navigators_Static_Deck.html + deck-images/ are required at runtime.
+__pycache__/
+*.pptx
+.cursor/
+AI_Geo_Navigators_Structured_Deck.html
+AI_Geo_Navigators_Presentation.html
+AI_Geo_Navigators_33_Slide_Dashboard.html
+static_deck_slides.html
+_build_33_structured_deck.py
+_build_static_structured_deck.py
+check_deck_assets.py
+slides/

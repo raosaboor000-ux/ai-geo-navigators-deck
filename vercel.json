@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/AI_Geo_Navigators_Static_Deck.html"
+    }
+  ]
+}

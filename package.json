@@ -1,0 +1,6 @@
+{
+  "name": "ai-geo-navigators-static-deck",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static HTML deck for Vercel — no build step; paths are relative to deck-images/"
+}

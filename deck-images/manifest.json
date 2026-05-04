@@ -1,0 +1,88 @@
+{
+  "04-climate-impacts": [
+    "drought.png",
+    "flood.png",
+    "landslide.png",
+    "wildfire.png"
+  ],
+  "06-gis-remote-sensing": [
+    "Picture1.png"
+  ],
+  "07-approach": [
+    "Picture2.png"
+  ],
+  "10-completed-projects": [
+    "Picture3.png",
+    "Picture4.png",
+    "Picture5.png"
+  ],
+  "11-more-projects": [
+    "Picture6.png",
+    "Picture7.png",
+    "Picture8.png"
+  ],
+  "12-project-visual": [
+    "Picture9.png"
+  ],
+  "14-shine": [
+    "Picture10.png"
+  ],
+  "15-dlls": [
+    "Picture11.png"
+  ],
+  "16-clim-13": [
+    "Picture15.png"
+  ],
+  "17-agile": [
+    "14.png"
+  ],
+  "18-resil-ai": [
+    "15.png"
+  ],
+  "19-dbo": [
+    "16.png"
+  ],
+  "21-firm": [
+    "Picture18.png"
+  ],
+  "22-agro-ai": [
+    "Picture19.png"
+  ],
+  "23-district": [
+    "Screenshot 2026-05-02 162419.png"
+  ],
+  "24-regional-visual": [
+    "Screenshot 2026-05-02 162312.png"
+  ],
+  "25-tapash": [
+    "Picture21.png"
+  ],
+  "26-arid": [
+    "Picture22.png"
+  ],
+  "27-palm-solutions": [
+    "mobile apps.png"
+  ],
+  "28-data-dashboards": [
+    "Picture23.png",
+    "Picture24.png",
+    "Picture25.png",
+    "Picture26.png"
+  ],
+  "29-tech-frontiers": [
+    "Picture27.png",
+    "Picture28.png"
+  ],
+  "30-presence": [
+    "Screenshot 2026-05-02 113124.png"
+  ],
+  "31-awards": [
+    "Picture29.png",
+    "Picture30.png",
+    "Picture31.png",
+    "Picture32.png"
+  ],
+  "32-contact": [
+    "Picture33.png"
+  ]
+}
