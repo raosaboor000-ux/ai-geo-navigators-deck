@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,8 +23,8 @@
 <style>
 /* ============================================================
    1) THEME TOKENS — lifted from the source deck
-   The dashboard ships in DARK mode by default to match the deck.
-   Light mode is an alternate theme using the same palette.
+   Default theme is LIGHT; use the navbar control (or T) to switch to dark.
+   Dark mode uses the same palette tokens with navy backgrounds.
 ============================================================ */
 :root,
 [data-theme="dark"] {
@@ -946,7 +946,7 @@ html, body {
 .hero-corner-logo-wrap {
   position: absolute;
   left: 50%;
-  bottom: clamp(18px, 3.8vh, 44px);
+  bottom: clamp(40px, 7.2vh, 100px);
   top: auto;
   right: auto;
   transform: translateX(-50%);
@@ -965,7 +965,7 @@ html, body {
 }
 @media (max-width: 1000px) {
   .slide.hero .hero-corner-logo-wrap {
-    bottom: clamp(14px, 3vh, 36px);
+    bottom: clamp(32px, 6vh, 72px);
     left: 50%;
     transform: translateX(-50%);
   }
@@ -2897,11 +2897,11 @@ function toggleFullscreen() {
 $('#fullscreenToggle').addEventListener('click', toggleFullscreen);
 
 function toggleTheme() {
-  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+  const cur = document.documentElement.getAttribute('data-theme') || 'light';
   document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
 }
 $('#themeToggle').addEventListener('click', toggleTheme);
-document.documentElement.setAttribute('data-theme', 'dark');
+document.documentElement.setAttribute('data-theme', 'light');
 
 function wireSlideVisuals() {
   const m = typeof window.__DECK_IMG_MANIFEST === 'object' && window.__DECK_IMG_MANIFEST !== null
