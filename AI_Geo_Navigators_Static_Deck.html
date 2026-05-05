@@ -985,11 +985,19 @@ html, body {
 }
 /* Deck typography — modest readability bump */
 .slide:not(.hero) .eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.2em;
+  font-size: clamp(18px, 2.2vw, 30px);
+  letter-spacing: 0.14em;
+  font-weight: 800;
+  margin-bottom: 22px;
+  color: var(--orange);
+}
+.slide:not(.hero) .eyebrow::before {
+  width: 6px;
+  height: 22px;
+  background: var(--orange);
 }
 .slide:not(.hero) .headline {
-  font-size: clamp(26px, 3.65vw, 42px);
+  display: none;
 }
 .slide .lede {
   font-size: 17px;
@@ -1131,6 +1139,7 @@ html, body {
 #slide-image-slot-11.slide-project-visual-12 .deck-photo-grid__img {
   width: 100%;
   max-width: none;
+  max-height: min(39vh, 350px);
 }
 @media (max-width: 760px) {
   #slide-image-slot-11.slide-project-visual-12 .deck-photo-grid {
@@ -1179,6 +1188,7 @@ html, body {
 .slide-projects-photo-align #slide-visual-slot-11 .deck-photo-grid__img {
   width: 100%;
   max-width: none;
+  max-height: min(40vh, 360px);
 }
 @media (max-width: 900px) {
   .slide-projects-photo-align #slide-visual-slot-10 .deck-photo-grid,
@@ -2084,11 +2094,11 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide slide-projects-photo-align" data-title="More Projects">
+<section class="slide slide-projects-photo-align" data-title="Completed Projects(cont...)">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">10 — More Projects</div>
-        <h1 class="headline">More Projects</h1>
+        <div class="eyebrow">10 — Completed Projects(cont...)</div>
+        <h1 class="headline">Completed Projects(cont...)</h1>
 <div class="deck-copy deck-copy--ppt">
 <div class="deck-ppt-layout">
 <div class="deck-ppt-row deck-ppt-row--3">
@@ -2122,23 +2132,20 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="Project Visual">
+<section class="slide" data-title="Completed Projects(cont...)">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">11 — Project Visual</div>
-        <h1 class="headline">Project Visual</h1>
+        <div class="eyebrow">11 — Completed Projects(cont...)</div>
+        <h1 class="headline">Completed Projects(cont...)</h1>
 
-        <div class="deck-copy deck-copy--ppt slide-project-visual-lede">
-          <div class="cream-card deck-ppt-box">
-            <h3 class="deck-ppt-shout">Completed Projects</h3>
-          </div>
-        </div>
         <div class="deck-copy deck-copy--ppt slide-project-visual-caption-row">
           <div class="cream-card deck-ppt-box">
             <h3 class="deck-ppt-shout">PWD</h3>
+            <p class="deck-ppt-body">Multi Hazard Vulnerability and Risk Assessment (MHVRA) of the 1.5 MW Hydropower Facility at Budalas Nagar Gilgit Baltistan</p>
           </div>
           <div class="cream-card deck-ppt-box">
             <h3 class="deck-ppt-shout">NDMA</h3>
+            <p class="deck-ppt-body">Multi-Hazard Vulnerability and Risk Assessment (MHVRA) - District Nushki</p>
           </div>
         </div>
         <div class="slide-image-slot slide-inline-visual slide-project-visual-12" id="slide-image-slot-11" data-image-slide="11">
