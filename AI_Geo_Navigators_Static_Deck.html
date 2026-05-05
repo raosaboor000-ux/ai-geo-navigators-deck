@@ -6,12 +6,12 @@
 <title>AI Geo Navigators — Presentation</title>
 
 <!-- ============================================================
-     AI GEO NAVIGATORS — STRUCTURED HTML DECK (33 slides)
+     AI GEO NAVIGATORS — STRUCTURED HTML DECK (32 slides)
      STATIC DECK — no .pptx. Edit static_deck_slides.html then run python _build_static_structured_deck.py. Deploy: serve this HTML + the deck-images/ folder together (relative paths).
      Slide markup: static_deck_slides.html (built). Images: ./deck-images/
      Image assets live under deck-images/ — see deck-images/SLIDE_ASSETS.txt
-     Slides with deck-images: 4 (tiles), 6-7, 10-12, 14-19, 21-27, 28-32 — see deck-images/SLIDE_ASSETS.txt
-     Logo: deck-images/ai_geo_logo.jpg · Raster slide exports: AI_Geo_Navigators_33_Slide_Dashboard.html
+     Slides with deck-images: 3 (tiles), 5-6, 9-11, 13-18, 20-26, 27-31 — see deck-images/SLIDE_ASSETS.txt
+     Logo: deck-images/bg_rem_logo.png · Raster slide exports: AI_Geo_Navigators_33_Slide_Dashboard.html
 ============================================================ -->
 
 <!-- Fonts: serif headlines + clean sans body, matching the deck -->
@@ -114,7 +114,7 @@ html, body {
 }
 #loader.hidden { opacity: 0; pointer-events: none; }
 .loader-logo {
-  max-width: 220px;
+  max-width: 300px;
   height: auto;
   margin-bottom: 28px;
   animation: pulseFade 1.6s ease-in-out infinite;
@@ -156,7 +156,7 @@ html, body {
 }
 .brand { display: flex; align-items: center; gap: 14px; }
 .brand img {
-  height: 36px;
+  height: 56px;
   width: auto;
   display: block;
   filter: brightness(1.15) contrast(0.95);
@@ -529,7 +529,7 @@ html, body {
 .grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
 
 /* ============================================================
-   9) STAT CARDS (climate stats slide — matches deck slide 5)
+   9) STAT CARDS (climate stats slide — matches deck slide 3)
 ============================================================ */
 .stat-card {
   background: var(--bg-cream);
@@ -906,7 +906,7 @@ html, body {
   .step-num { font-size: 40px; }
   .controls { padding: 0 12px; }
   .slide-counter { display: none; }
-  .brand img { height: 30px; }
+  .brand img { height: 46px; }
   .hero-eyebrow { margin-bottom: 20px; }
   .slide-foot { font-size: 9px; gap: 8px; }
   .slide-foot .center { display: none; }
@@ -957,8 +957,8 @@ html, body {
   display: block;
   width: auto;
   height: auto;
-  max-width: clamp(120px, 16vw, 176px);
-  max-height: clamp(80px, 12vh, 120px);
+  max-width: clamp(168px, 21vw, 232px);
+  max-height: clamp(104px, 15vh, 156px);
   object-fit: contain;
   border-radius: 0;
   filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.2));
@@ -970,11 +970,11 @@ html, body {
     transform: translateX(-50%);
   }
   .hero-corner-logo {
-    max-width: clamp(104px, 20vw, 152px);
-    max-height: clamp(72px, 13vh, 104px);
+    max-width: clamp(144px, 24vw, 196px);
+    max-height: clamp(96px, 16vh, 138px);
   }
 }
-/* Navbar + loader logo — square corners (no rounding on ai_geo_logo) */
+/* Navbar + loader logo — square corners (no rounding on bg_rem_logo) */
 .navbar .brand img,
 .loader-logo {
   border-radius: 0;
@@ -1080,18 +1080,28 @@ html, body {
   height: min(52vh, 560px);
   max-height: min(52vh, 560px);
 }
-/* Slide 6 — banner + image same width as slide body (copy max-width was narrower before) */
+/* Slide 11 — caption strip above project image (cream + orange rule, shout text) */
+.slide-project-visual-lede {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto 16px;
+  box-sizing: border-box;
+}
+.slide-project-visual-lede .cream-card.deck-ppt-box {
+  padding: 14px 20px;
+}
+.slide-project-visual-lede .deck-ppt-shout {
+  margin-bottom: 0;
+}
+/* Slide 5 — GIS: banner + image same width as slide body (copy max-width was narrower before) */
 .slide.slide-gis6-visual .slide-body > .deck-copy.deck-copy--ppt {
   max-width: none;
   width: 100%;
 }
 .slide.slide-gis6-visual #slide-visual-slot-6 {
-  background: #e3f4fc;
-  border-radius: 10px;
-  padding: 12px;
-  box-sizing: border-box;
   width: 100%;
   max-width: none;
+  box-sizing: border-box;
 }
 .deck-photo-grid {
   display: grid;
@@ -1334,16 +1344,36 @@ html, body {
   width: 100%;
   max-width: min(460px, 100%);
 }
-.deck-slide23-tagline {
+/* Slide 2 — About us: full-width intro, two point cards below */
+.deck-ppt-layout--about-us {
+  align-items: stretch;
+  width: 100%;
+  gap: clamp(18px, 2.8vh, 28px);
+}
+.deck-about-intro {
   width: 100%;
   max-width: 940px;
   margin-inline: auto;
   box-sizing: border-box;
 }
-.deck-slide23-tagline .cream-card.deck-ppt-box {
+.deck-about-intro .cream-card.deck-ppt-box {
   width: 100%;
 }
+.deck-about-two-col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 2.8vw, 28px);
+  width: 100%;
+  max-width: 940px;
+  margin-inline: auto;
+  align-items: stretch;
+  justify-items: stretch;
+}
 @media (max-width: 760px) {
+  .deck-about-two-col {
+    grid-template-columns: 1fr;
+    max-width: min(480px, 100%);
+  }
   .deck-slide8-services-top {
     grid-template-columns: 1fr;
     max-width: min(480px, 100%);
@@ -1644,7 +1674,7 @@ button.dot.active { background: var(--orange); }
      LOADER
 ============================================================ -->
 <div id="loader">
-  <img class="loader-logo" src="deck-images/ai_geo_logo.jpg" alt="AI Geo Navigators" onerror="if(!this.dataset._e){this.dataset._e='1';this.src='deck-images/ai_geo_logo.png';}else{this.style.display='none';}" />
+  <img class="loader-logo" src="deck-images/bg_rem_logo.png" alt="AI Geo Navigators" onerror="if(!this.dataset._e){this.dataset._e='1';this.src='deck-images/ai_geo_logo.png';}else if(!this.dataset._e2){this.dataset._e2='1';this.src='deck-images/ai_geo_logo.jpg';}else{this.style.display='none';}" />
   <div class="loader-ring"></div>
   <div class="loader-text">Loading presentation</div>
 </div>
@@ -1654,7 +1684,7 @@ button.dot.active { background: var(--orange); }
 ============================================================ -->
 <nav class="navbar">
   <div class="brand">
-    <img src="deck-images/ai_geo_logo.jpg" alt="AI Geo Navigators" onerror="if(!this.dataset._e){this.dataset._e='1';this.src='deck-images/ai_geo_logo.png';}else{this.style.display='none';}" />
+    <img src="deck-images/bg_rem_logo.png" alt="AI Geo Navigators" onerror="if(!this.dataset._e){this.dataset._e='1';this.src='deck-images/ai_geo_logo.png';}else if(!this.dataset._e2){this.dataset._e2='1';this.src='deck-images/ai_geo_logo.jpg';}else{this.style.display='none';}" />
     <div class="brand-text">
       <span class="b1">AI Geo Navigators</span>
       <span class="b2">Geospatial · AI · Climate</span>
@@ -1672,7 +1702,7 @@ button.dot.active { background: var(--orange); }
 </nav>
 
 <!-- ============================================================
-     SLIDES (33 — PPTX order)
+     SLIDES (32 — PPTX order)
 ============================================================ -->
 <div class="slides-wrapper" id="slidesWrapper">
 
@@ -1740,7 +1770,7 @@ button.dot.active { background: var(--orange); }
           <span class="hero-title">AI GEO</span>
           <span class="hero-title accent">NAVIGATORS</span>
         </div>
-        <p class="hero-tagline">Mapping Data &amp; Business Solutions</p>
+        <p class="hero-tagline">We Map Data and Business Solutions</p>
         <p class="hero-desc">
           Redefining how the world is mapped — with <span class="hl">intelligence</span>, <span class="hl">sustainability</span>, and <span class="hl">ethical transparency</span> at every step.
         </p>
@@ -1750,9 +1780,9 @@ button.dot.active { background: var(--orange); }
         <div class="hero-corner-logo-wrap" aria-hidden="true">
           <img
             class="hero-corner-logo"
-            src="deck-images/ai_geo_logo.jpg"
+            src="deck-images/bg_rem_logo.png"
             alt=""
-            onerror="if(!this.dataset._fb){this.dataset._fb='1';this.src='deck-images/ai_geo_logo.png';}else{this.style.display='none';}"
+            onerror="if(!this.dataset._fb){this.dataset._fb='1';this.src='deck-images/ai_geo_logo.png';}else if(!this.dataset._fb2){this.dataset._fb2='1';this.src='deck-images/ai_geo_logo.jpg';}else{this.style.display='none';}"
           />
         </div>
         <div class="hero-right-pill-copy">
@@ -1763,32 +1793,27 @@ button.dot.active { background: var(--orange); }
     </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>1 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>1 / 32</span>
       </div>
   </section>
 
-<section class="slide" data-title="About">
+<section class="slide" data-title="About us">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">02 — About</div>
-        <h1 class="headline">About</h1>
+        <div class="eyebrow">02 — About us</div>
+        <h1 class="headline">About us</h1>
 <div class="deck-copy deck-copy--ppt">
-<div class="deck-ppt-layout deck-ppt-layout--services deck-ppt-layout--slide8-two-plus-one">
-<div class="deck-slide23-tagline">
-<div class="cream-card deck-ppt-box">
-  <p class="deck-ppt-body">We Map Data And Business Solutions!</p>
-</div>
-</div>
-<div class="deck-slide8-services-top">
+<div class="deck-ppt-layout deck-ppt-layout--services deck-ppt-layout--about-us">
+<div class="deck-about-intro">
 <div class="cream-card deck-ppt-box">
   <p class="deck-ppt-body">We are a climate-intelligence and geospatial firm specializing in:</p>
 </div>
+</div>
+<div class="deck-about-two-col">
 <div class="cream-card deck-ppt-box">
   <p class="deck-ppt-body">Transforming climate &amp; environmental data into actionable insights</p>
 </div>
-</div>
-<div class="deck-slide8-services-bottom">
 <div class="cream-card deck-ppt-box">
   <p class="deck-ppt-body">We integrate artificial intelligence (machine and deep learning) with GIS &amp; remote sensing, for enhanced analytics.</p>
 </div>
@@ -1798,39 +1823,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>2 / 33</span>
-      </div>
-    </div>
-  </section>
-
-<section class="slide" data-title="Climate Challenge">
-    <div class="slide-inner">
-      <div class="slide-body">
-        <div class="eyebrow">03 — Climate Challenge</div>
-        <h1 class="headline">Climate Challenge</h1>
-<div class="deck-copy deck-copy--ppt">
-<div class="deck-ppt-layout deck-ppt-layout--services deck-ppt-layout--slide8-two-plus-one">
-<div class="deck-slide8-services-top">
-<div class="cream-card deck-ppt-box">
-  <p class="deck-ppt-body">Global temperatures are rising at an unprecedented rate.</p>
-</div>
-<div class="cream-card deck-ppt-box">
-  <p class="deck-ppt-body">Extreme weather events and disasters are becoming more frequent and severe.</p>
-</div>
-</div>
-<div class="deck-slide8-services-bottom">
-<div class="cream-card deck-ppt-box">
-  <p class="deck-ppt-body">Ecosystems, human health, and economies are increasingly at risk.</p>
-</div>
-</div>
-</div>
-</div>
-      </div>
-      <div class="slide-foot">
-        <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>3 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>2 / 32</span>
       </div>
     </div>
   </section>
@@ -1838,7 +1832,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="Climate Impacts">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">04 — Climate Impacts</div>
+        <div class="eyebrow">03 — Climate Impacts</div>
         <h1 class="headline">Climate Impacts</h1>
 <p class="lede" style="margin-bottom:8px;">CLIMATE CHANGE IMPACTS</p>
 <div class="impacts-grid">
@@ -1870,8 +1864,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>4 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>3 / 32</span>
       </div>
     </div>
   </section>
@@ -1879,7 +1873,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide slide-section-title" data-title="Way Forward">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">05 — Way Forward</div>
+        <div class="eyebrow">04 — Way Forward</div>
         <h1 class="headline">Way Forward</h1>
 <div class="deck-copy deck-copy--ppt">
 
@@ -1887,8 +1881,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>5 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>4 / 32</span>
       </div>
     </div>
   </section>
@@ -1896,8 +1890,8 @@ button.dot.active { background: var(--orange); }
 <section class="slide slide-gis6-visual" data-title="GIS &amp; Remote Sensing">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">06 — GIS &amp; Remote Sensing</div>
-        <h1 class="headline">GIS &amp; Remote Sensing</h1>
+        <div class="eyebrow">05 — GIS And Remote Sensing</div>
+        <h1 class="headline">GIS And Remote Sensing</h1>
 <div class="deck-copy deck-copy--ppt">
 <div class="deck-ppt-layout">
 <div class="cream-card deck-ppt-box deck-ppt-box--banner">
@@ -1912,17 +1906,17 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>6 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>5 / 32</span>
       </div>
     </div>
   </section>
 
-<section class="slide" data-title="Approach">
+<section class="slide" data-title="Our Approach">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">07 — Approach</div>
-        <h1 class="headline">Approach</h1>
+        <div class="eyebrow">06 — Our Approach</div>
+        <h1 class="headline">Our Approach</h1>
 
         <div class="deck-slide-24-esg">
           <div class="slide-image-slot slide-image-slot--esg slide-inline-visual" id="slide-image-slot-7">
@@ -1951,17 +1945,17 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>7 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>6 / 32</span>
       </div>
     </div>
   </section>
 
-<section class="slide" data-title="Core Services">
+<section class="slide" data-title="Our Core Services">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">08 — Core Services</div>
-        <h1 class="headline">Core Services</h1>
+        <div class="eyebrow">07 — Our Core Services</div>
+        <h1 class="headline">Our Core Services</h1>
 <div class="deck-copy deck-copy--ppt">
 <div class="deck-ppt-layout deck-ppt-layout--services deck-ppt-layout--slide8-two-plus-one">
 <div class="deck-slide8-services-top">
@@ -1985,8 +1979,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>8 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>7 / 32</span>
       </div>
     </div>
   </section>
@@ -1994,7 +1988,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide slide-section-title" data-title="Projects">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">09 — Projects</div>
+        <div class="eyebrow">08 — Projects</div>
         <h1 class="headline">Projects</h1>
 <div class="deck-copy deck-copy--ppt">
 
@@ -2002,8 +1996,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>9 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>8 / 32</span>
       </div>
     </div>
   </section>
@@ -2011,7 +2005,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide slide-projects-photo-align" data-title="Completed Projects">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">10 — Completed Projects</div>
+        <div class="eyebrow">09 — Completed Projects</div>
         <h1 class="headline">Completed Projects</h1>
 <div class="deck-copy deck-copy--ppt">
 <div class="deck-ppt-layout">
@@ -2040,8 +2034,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>10 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>9 / 32</span>
       </div>
     </div>
   </section>
@@ -2049,7 +2043,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide slide-projects-photo-align" data-title="More Projects">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">11 — More Projects</div>
+        <div class="eyebrow">10 — More Projects</div>
         <h1 class="headline">More Projects</h1>
 <div class="deck-copy deck-copy--ppt">
 <div class="deck-ppt-layout">
@@ -2078,8 +2072,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>11 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>10 / 32</span>
       </div>
     </div>
   </section>
@@ -2087,18 +2081,23 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="Project Visual">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">12 — Project Visual</div>
+        <div class="eyebrow">11 — Project Visual</div>
         <h1 class="headline">Project Visual</h1>
 
-        <div class="slide-image-slot" id="slide-image-slot-12" data-image-slide="12">
+        <div class="deck-copy deck-copy--ppt slide-project-visual-lede">
+          <div class="cream-card deck-ppt-box">
+            <h3 class="deck-ppt-shout">Completed Projects</h3>
+          </div>
+        </div>
+        <div class="slide-image-slot" id="slide-image-slot-11" data-image-slide="11">
           <div class="slide-visual-mount" data-visual-dir="12-project-visual" aria-hidden="true"></div>
           <p class="image-missing-hint">Image-only slide — add PNG/JPEG under <code>deck-images/12-project-visual/</code>, then rebuild to refresh the manifest.</p>
         </div>
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>12 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>11 / 32</span>
       </div>
     </div>
   </section>
@@ -2106,7 +2105,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide slide-section-title" data-title="Innovations">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">13 — Innovations</div>
+        <div class="eyebrow">12 — Innovations</div>
         <h1 class="headline">Innovations</h1>
 <div class="deck-copy deck-copy--ppt">
 
@@ -2114,8 +2113,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>13 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>12 / 32</span>
       </div>
     </div>
   </section>
@@ -2123,7 +2122,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="SHINE">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">14 — SHINE</div>
+        <div class="eyebrow">13 — SHINE</div>
         <h1 class="headline">SHINE</h1>
 
         <div class="deck-slide-24-esg">
@@ -2152,8 +2151,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>14 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>13 / 32</span>
       </div>
     </div>
   </section>
@@ -2161,7 +2160,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="DLLS">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">15 — DLLS</div>
+        <div class="eyebrow">14 — DLLS</div>
         <h1 class="headline">DLLS</h1>
 
         <div class="deck-slide-24-esg">
@@ -2191,8 +2190,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>15 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>14 / 32</span>
       </div>
     </div>
   </section>
@@ -2200,7 +2199,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="CLIM-13">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">16 — CLIM-13</div>
+        <div class="eyebrow">15 — CLIM-13</div>
         <h1 class="headline">CLIM-13</h1>
 
         <div class="deck-slide-24-esg">
@@ -2229,8 +2228,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>16 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>15 / 32</span>
       </div>
     </div>
   </section>
@@ -2238,7 +2237,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="AGILE">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">17 — AGILE</div>
+        <div class="eyebrow">16 — AGILE</div>
         <h1 class="headline">AGILE</h1>
 
         <div class="deck-slide-24-esg">
@@ -2268,8 +2267,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>17 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>16 / 32</span>
       </div>
     </div>
   </section>
@@ -2277,7 +2276,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="RESIL-AI">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">18 — RESIL-AI</div>
+        <div class="eyebrow">17 — RESIL-AI</div>
         <h1 class="headline">RESIL-AI</h1>
 
         <div class="deck-slide-24-esg">
@@ -2306,8 +2305,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>18 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>17 / 32</span>
       </div>
     </div>
   </section>
@@ -2315,7 +2314,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="DBO">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">19 — DBO</div>
+        <div class="eyebrow">18 — DBO</div>
         <h1 class="headline">DBO</h1>
 
         <div class="deck-slide-24-esg">
@@ -2345,8 +2344,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>19 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>18 / 32</span>
       </div>
     </div>
   </section>
@@ -2354,7 +2353,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide slide-section-title" data-title="SaaS Products">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">20 — SaaS Products</div>
+        <div class="eyebrow">19 — SaaS Products</div>
         <h1 class="headline">SaaS Products</h1>
 <div class="deck-copy deck-copy--ppt">
 
@@ -2362,8 +2361,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>20 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>19 / 32</span>
       </div>
     </div>
   </section>
@@ -2371,7 +2370,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="FIRM">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">21 — FIRM</div>
+        <div class="eyebrow">20 — FIRM</div>
         <h1 class="headline">FIRM</h1>
 
         <div class="deck-slide-24-esg">
@@ -2402,8 +2401,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>21 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>20 / 32</span>
       </div>
     </div>
   </section>
@@ -2411,7 +2410,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="AGRO AI">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">22 — AGRO AI</div>
+        <div class="eyebrow">21 — AGRO AI</div>
         <h1 class="headline">AGRO AI</h1>
 
         <div class="deck-slide-24-esg">
@@ -2441,8 +2440,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>22 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>21 / 32</span>
       </div>
     </div>
   </section>
@@ -2450,7 +2449,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="TAPASH">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">23 — TAPASH</div>
+        <div class="eyebrow">22 — TAPASH</div>
         <h1 class="headline">TAPASH</h1>
 
         <div class="deck-slide-24-esg">
@@ -2480,8 +2479,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>23 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>22 / 32</span>
       </div>
     </div>
   </section>
@@ -2489,7 +2488,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="ARID">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">24 — ARID</div>
+        <div class="eyebrow">23 — ARID</div>
         <h1 class="headline">ARID</h1>
 
         <div class="deck-slide-24-esg">
@@ -2519,17 +2518,17 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>24 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>23 / 32</span>
       </div>
     </div>
   </section>
 
-<section class="slide" data-title="DISTRICT">
+<section class="slide" data-title="DISTRICT RESILIENCE DASHBOARD">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">25 — DISTRICT</div>
-        <h1 class="headline">DISTRICT</h1>
+        <div class="eyebrow">24 — DISTRICT RESILIENCE DASHBOARD</div>
+        <h1 class="headline">DISTRICT RESILIENCE DASHBOARD</h1>
 
         <div class="deck-slide-24-esg">
           <div class="slide-image-slot slide-image-slot--esg slide-inline-visual" id="slide-image-slot-25">
@@ -2558,8 +2557,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>25 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>24 / 32</span>
       </div>
     </div>
   </section>
@@ -2567,7 +2566,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="ESG Calculator">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">26 — ESG Calculator</div>
+        <div class="eyebrow">25 — ESG Calculator</div>
         <h1 class="headline">ESG Calculator</h1>
 
         <div class="deck-slide-24-esg">
@@ -2597,8 +2596,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>26 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>25 / 32</span>
       </div>
     </div>
   </section>
@@ -2606,7 +2605,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="Palm Solutions">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">27 — Palm Solutions</div>
+        <div class="eyebrow">26 — Palm Solutions</div>
         <h1 class="headline">Palm Solutions</h1>
 
         <div class="deck-slide-24-esg">
@@ -2633,8 +2632,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>27 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>26 / 32</span>
       </div>
     </div>
   </section>
@@ -2642,7 +2641,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide slide-data-dash-2x2" data-title="Data &amp; Dashboards">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">28 — Data &amp; Dashboards</div>
+        <div class="eyebrow">27 — Data &amp; Dashboards</div>
         <h1 class="headline">Data &amp; Dashboards</h1>
 <div class="deck-copy deck-copy--ppt">
 <div class="deck-ppt-layout">
@@ -2658,8 +2657,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>28 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>27 / 32</span>
       </div>
     </div>
   </section>
@@ -2667,13 +2666,13 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="Tech Frontiers">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">29 — Tech Frontiers</div>
+        <div class="eyebrow">28 — Tech Frontiers</div>
         <h1 class="headline">Tech Frontiers</h1>
 <div class="deck-copy deck-copy--ppt">
 <div class="deck-ppt-layout">
 <div class="deck-ppt-row deck-ppt-row--2">
 <div class="cream-card deck-ppt-box">
-<h3 class="deck-ppt-shout">NVDIA AI COMPUTERS OF BRACEWELL TECHNOLOGY GPUS</h3>
+<h3 class="deck-ppt-shout">NVIDIA AI COMPUTERS OF BRACEWELL TECHNOLOGY GPUS</h3>
 </div>
 <div class="cream-card deck-ppt-box">
 <h3 class="deck-ppt-shout">ACCESS TO QUANTANIUM QUANTUM COMPUTING</h3>
@@ -2696,8 +2695,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>29 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>28 / 32</span>
       </div>
     </div>
   </section>
@@ -2705,18 +2704,18 @@ button.dot.active { background: var(--orange); }
 <section class="slide" data-title="Presence">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">30 — Presence</div>
+        <div class="eyebrow">29 — Presence</div>
         <h1 class="headline">Presence</h1>
 
-        <div class="slide-image-slot" id="slide-image-slot-30" data-image-slide="30">
+        <div class="slide-image-slot" id="slide-image-slot-29" data-image-slide="29">
           <div class="slide-visual-mount" data-visual-dir="30-presence" aria-hidden="true"></div>
           <p class="image-missing-hint">Image-only slide — add PNG/JPEG under <code>deck-images/30-presence/</code>, then rebuild to refresh the manifest.</p>
         </div>
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>30 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>29 / 32</span>
       </div>
     </div>
   </section>
@@ -2724,7 +2723,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide slide-awards-slide" data-title="Awards">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">31 — Awards</div>
+        <div class="eyebrow">30 — Awards</div>
         <h1 class="headline">Awards</h1>
 <div class="deck-copy deck-copy--ppt">
 <div class="deck-ppt-layout">
@@ -2751,8 +2750,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>31 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>30 / 32</span>
       </div>
     </div>
   </section>
@@ -2760,7 +2759,7 @@ button.dot.active { background: var(--orange); }
 <section class="slide slide-contact-slide" data-title="Contact">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">32 — Contact</div>
+        <div class="eyebrow">31 — Contact</div>
         <h1 class="headline">Contact</h1>
         <p class="lede contact-slide-lede" style="margin-bottom:12px;">GET IN TOUCH</p>
         <div class="contact-strip">
@@ -2787,8 +2786,8 @@ button.dot.active { background: var(--orange); }
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>32 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>31 / 32</span>
       </div>
     </div>
   </section>
@@ -2796,14 +2795,14 @@ button.dot.active { background: var(--orange); }
 <section class="slide thank-you-slide" data-title="Thank You">
     <div class="slide-inner">
       <div class="slide-body">
-        <div class="eyebrow">33 — Thank You</div>
+        <div class="eyebrow">32 — Thank You</div>
         <h1 class="headline">Thank You</h1>
 
       </div>
       <div class="slide-foot">
         <span class="left">AI GEO NAVIGATORS</span>
-        <span class="center">Mapping Data &amp; Business Solutions</span>
-        <span>33 / 33</span>
+        <span class="center">We Map Data and Business Solutions</span>
+        <span>32 / 32</span>
       </div>
     </div>
   </section>
@@ -2819,7 +2818,7 @@ button.dot.active { background: var(--orange); }
   </button>
   <div class="indicators" id="indicators"></div>
   <div class="controls-right">
-    <span class="slide-counter" id="slideCounter">1 / 33</span>
+    <span class="slide-counter" id="slideCounter">1 / 32</span>
     <button class="arrow-btn" id="nextBtn" title="Next (→)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
     </button>
@@ -2827,7 +2826,7 @@ button.dot.active { background: var(--orange); }
 </div>
 
 <script>
-window.__DECK_IMG_MANIFEST = {"04-climate-impacts":["drought.png","flood.png","landslide.png","wildfire.png"],"06-gis-remote-sensing":["Picture1.png"],"07-approach":["Picture2.png"],"10-completed-projects":["Picture3.png","Picture4.png","Picture5.png"],"11-more-projects":["Picture6.png","Picture7.png","Picture8.png"],"12-project-visual":["Picture9.png"],"14-shine":["Picture10.png"],"15-dlls":["Picture11.png"],"16-clim-13":["Picture15.png"],"17-agile":["14.png"],"18-resil-ai":["15.png"],"19-dbo":["16.png"],"21-firm":["Picture18.png"],"22-agro-ai":["Picture19.png"],"23-district":["Screenshot 2026-05-02 162419.png"],"24-regional-visual":["Screenshot 2026-05-02 162312.png"],"25-tapash":["Picture21.png"],"26-arid":["Picture22.png"],"27-palm-solutions":["mobile apps.png"],"28-data-dashboards":["Picture23.png","Picture24.png","Picture25.png","Picture26.png"],"29-tech-frontiers":["Picture27.png","Picture28.png"],"30-presence":["Screenshot 2026-05-02 113124.png"],"31-awards":["Picture29.png","Picture30.png","Picture31.png","Picture32.png"],"32-contact":["Picture33.png"]};
+window.__DECK_IMG_MANIFEST = {"04-climate-impacts":["drought.png","flood.png","landslide.png","wildfire.png"],"06-gis-remote-sensing":["Picture1.png"],"07-approach":["Picture2.png"],"10-completed-projects":["Picture3.png","Picture4.png","Picture5.png"],"11-more-projects":["Picture6.png","Picture7.png","Picture8.png"],"12-project-visual":["completed projects.png"],"14-shine":["Picture10.png"],"15-dlls":["Picture11.png"],"16-clim-13":["Picture15.png"],"17-agile":["14.png"],"18-resil-ai":["15.png"],"19-dbo":["dbo.png"],"21-firm":["Picture18.png"],"22-agro-ai":["Picture19.png"],"23-district":["Screenshot 2026-05-02 162419.png"],"24-regional-visual":["Screenshot 2026-05-02 162312.png"],"25-tapash":["Picture21.png"],"26-arid":["Picture22.png"],"27-palm-solutions":["mobile apps.png"],"28-data-dashboards":["Picture23.png","Picture24.png","Picture25.png","Picture26.png"],"29-tech-frontiers":["Picture27.png","Picture28.png"],"30-presence":["Screenshot 2026-05-02 113124.png"],"31-awards":["Picture29.png","Picture30.png","Picture31.png","Picture32.png"],"32-contact":["Picture33.png"]};
 
 const $  = (s, root = document) => root.querySelector(s);
 const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));

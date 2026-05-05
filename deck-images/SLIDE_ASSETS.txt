@@ -1,40 +1,44 @@
 AI Geo Navigators — deck-images (slides that use graphics)
 ================================================================================
+Deck: 32 slides (HTML order). Slide 03 is Climate Impacts (Climate Challenge removed).
 
-Convention for slides EXCEPT 04:
+Convention for slides EXCEPT 04-climate-impacts:
   Place ONE primary graphic as slide.png or slide.jpg (or image.png / image.jpg).
   The HTML tries, in order: slide.png, slide.jpg, image.png, image.jpg
 
-SLIDE 04 — Climate Impacts (four tiles, not a single slide file)
+SLIDE 03 — Climate Impacts (four tiles, not a single slide file)
   Folder: 04-climate-impacts/
     drought.png or drought.jpg
     flood.png or flood.jpg
     wildfire.png or wildfire.jpg
     landslide.png or landslide.jpg
 
-SLIDE 06 — GIS & Remote Sensing     ->  06-gis-remote-sensing/
-SLIDE 07 — Approach                 ->  07-approach/
-SLIDE 10 — Completed Projects      ->  10-completed-projects/
-SLIDE 11 — More Projects            ->  11-more-projects/
-SLIDE 12 — Project Visual (image-only; no PPTX text)  ->  12-project-visual/
-SLIDE 14 — SHINE                    ->  14-shine/
-SLIDE 15 — DLLS                     ->  15-dlls/
-SLIDE 16 — CLIM-13                  ->  16-clim-13/
-SLIDE 17 — AGILE                    ->  17-agile/
-SLIDE 18 — RESIL-AI                 ->  18-resil-ai/
-SLIDE 19 — DBO                      ->  19-dbo/
-SLIDE 21 — FIRM                     ->  21-firm/
-SLIDE 22 — AGRO AI                  ->  22-agro-ai/
-SLIDE 23 — TAPASH                   ->  25-tapash/
-SLIDE 24 — ARID                     ->  26-arid/
-SLIDE 25 — DISTRICT                 ->  23-district/
-SLIDE 26 — ESG Calculator (image-only)  ->  24-regional-visual/
-SLIDE 27 — Palm Solutions           ->  27-palm-solutions/
-SLIDE 28 — Data & Dashboards        ->  28-data-dashboards/
-SLIDE 29 — Tech Frontiers           ->  29-tech-frontiers/
-SLIDE 30 — Presence                 ->  30-presence/
-SLIDE 31 — Awards                   ->  31-awards/
-SLIDE 32 — Contact                  ->  32-contact/
+SLIDE 05 — GIS & Remote Sensing     ->  06-gis-remote-sensing/
+SLIDE 06 — Our Approach             ->  07-approach/
+SLIDE 09 — Completed Projects       ->  10-completed-projects/
+SLIDE 10 — More Projects            ->  11-more-projects/
+SLIDE 11 — Project Visual           ->  12-project-visual/
+SLIDE 13 — SHINE                    ->  14-shine/
+SLIDE 14 — DLLS                     ->  15-dlls/
+SLIDE 15 — CLIM-13                  ->  16-clim-13/
+SLIDE 16 — AGILE                    ->  17-agile/
+SLIDE 17 — RESIL-AI                 ->  18-resil-ai/
+SLIDE 18 — DBO                      ->  19-dbo/
+SLIDE 20 — FIRM                     ->  21-firm/
+SLIDE 21 — AGRO AI                  ->  22-agro-ai/
+SLIDE 22 — TAPASH                   ->  25-tapash/
+SLIDE 23 — ARID                     ->  26-arid/
+SLIDE 24 — District Resilience      ->  23-district/
+SLIDE 25 — ESG Calculator           ->  24-regional-visual/
+SLIDE 26 — Palm Solutions           ->  27-palm-solutions/
+SLIDE 27 — Data & Dashboards        ->  28-data-dashboards/
+SLIDE 28 — Tech Frontiers           ->  29-tech-frontiers/
+SLIDE 29 — Presence                 ->  30-presence/
+SLIDE 30 — Awards                   ->  31-awards/
+SLIDE 31 — Contact                  ->  32-contact/
 
-After adding files, from folder "c:\aigeo pres" run:
+Folder names (e.g. 04-climate-impacts, 06-gis-remote-sensing) are stable asset keys;
+they do not renumber when a deck slide is removed.
+
+After adding files, from the project folder run:
   python check_deck_assets.py
