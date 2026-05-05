@@ -1093,6 +1093,50 @@ html, body {
 .slide-project-visual-lede .deck-ppt-shout {
   margin-bottom: 0;
 }
+/* Slide 11 — aligned labels above the two project images (PWD | NDMA) */
+.slide-project-visual-caption-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  max-width: 1120px;
+  margin: 12px auto 12px;
+  box-sizing: border-box;
+}
+.slide-project-visual-caption-row .cream-card.deck-ppt-box {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+.slide-project-visual-caption-row .cream-card.deck-ppt-box .deck-ppt-shout {
+  margin: 0;
+  text-align: center;
+}
+@media (max-width: 760px) {
+  .slide-project-visual-caption-row {
+    grid-template-columns: 1fr;
+    max-width: min(480px, 92vw);
+  }
+}
+/* Slide 11 — two project visuals side by side */
+#slide-image-slot-11.slide-project-visual-12 .deck-photo-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  align-items: start;
+  justify-items: stretch;
+}
+#slide-image-slot-11.slide-project-visual-12 .deck-photo-grid__img {
+  width: 100%;
+  max-width: none;
+}
+@media (max-width: 760px) {
+  #slide-image-slot-11.slide-project-visual-12 .deck-photo-grid {
+    grid-template-columns: 1fr;
+  }
+}
 /* Slide 5 — GIS: banner + image same width as slide body (copy max-width was narrower before) */
 .slide.slide-gis6-visual .slide-body > .deck-copy.deck-copy--ppt {
   max-width: none;
@@ -2089,7 +2133,15 @@ button.dot.active { background: var(--orange); }
             <h3 class="deck-ppt-shout">Completed Projects</h3>
           </div>
         </div>
-        <div class="slide-image-slot" id="slide-image-slot-11" data-image-slide="11">
+        <div class="deck-copy deck-copy--ppt slide-project-visual-caption-row">
+          <div class="cream-card deck-ppt-box">
+            <h3 class="deck-ppt-shout">PWD</h3>
+          </div>
+          <div class="cream-card deck-ppt-box">
+            <h3 class="deck-ppt-shout">NDMA</h3>
+          </div>
+        </div>
+        <div class="slide-image-slot slide-inline-visual slide-project-visual-12" id="slide-image-slot-11" data-image-slide="11">
           <div class="slide-visual-mount" data-visual-dir="12-project-visual" aria-hidden="true"></div>
           <p class="image-missing-hint">Image-only slide — add PNG/JPEG under <code>deck-images/12-project-visual/</code>, then rebuild to refresh the manifest.</p>
         </div>
@@ -2826,7 +2878,7 @@ button.dot.active { background: var(--orange); }
 </div>
 
 <script>
-window.__DECK_IMG_MANIFEST = {"04-climate-impacts":["drought.png","flood.png","landslide.png","wildfire.png"],"06-gis-remote-sensing":["Picture1.png"],"07-approach":["Picture2.png"],"10-completed-projects":["Picture3.png","Picture4.png","Picture5.png"],"11-more-projects":["Picture6.png","Picture7.png","Picture8.png"],"12-project-visual":["completed projects.png"],"14-shine":["Picture10.png"],"15-dlls":["Picture11.png"],"16-clim-13":["Picture15.png"],"17-agile":["14.png"],"18-resil-ai":["15.png"],"19-dbo":["dbo.png"],"21-firm":["Picture18.png"],"22-agro-ai":["Picture19.png"],"23-district":["Screenshot 2026-05-02 162419.png"],"24-regional-visual":["Screenshot 2026-05-02 162312.png"],"25-tapash":["Picture21.png"],"26-arid":["Picture22.png"],"27-palm-solutions":["mobile apps.png"],"28-data-dashboards":["Picture23.png","Picture24.png","Picture25.png","Picture26.png"],"29-tech-frontiers":["Picture27.png","Picture28.png"],"30-presence":["Screenshot 2026-05-02 113124.png"],"31-awards":["Picture29.png","Picture30.png","Picture31.png","Picture32.png"],"32-contact":["Picture33.png"]};
+window.__DECK_IMG_MANIFEST = {"04-climate-impacts":["drought.png","flood.png","landslide.png","wildfire.png"],"06-gis-remote-sensing":["Picture1.png"],"07-approach":["Picture2.png"],"10-completed-projects":["Picture3.png","Picture4.png","Picture5.png"],"11-more-projects":["Picture6.png","Picture7.png","Picture8.png"],"12-project-visual":["MHVRA.jpeg","NDMA.png"],"14-shine":["Picture10.png"],"15-dlls":["Picture11.png"],"16-clim-13":["Picture15.png"],"17-agile":["14.png"],"18-resil-ai":["15.png"],"19-dbo":["dbo.png"],"21-firm":["Picture18.png"],"22-agro-ai":["Picture19.png"],"23-district":["Screenshot 2026-05-02 162419.png"],"24-regional-visual":["Screenshot 2026-05-02 162312.png"],"25-tapash":["Picture21.png"],"26-arid":["Picture22.png"],"27-palm-solutions":["mobile apps.png"],"28-data-dashboards":["Picture23.png","Picture24.png","Picture25.png","Picture26.png"],"29-tech-frontiers":["Picture27.png","Picture28.png"],"30-presence":["Screenshot 2026-05-02 113124.png"],"31-awards":["Picture29.png","Picture30.png","Picture31.png","Picture32.png"],"32-contact":["Picture33.png"]};
 
 const $  = (s, root = document) => root.querySelector(s);
 const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));

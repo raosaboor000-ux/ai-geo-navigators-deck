@@ -18,6 +18,7 @@ SLIDE 06 — Our Approach             ->  07-approach/
 SLIDE 09 — Completed Projects       ->  10-completed-projects/
 SLIDE 10 — More Projects            ->  11-more-projects/
 SLIDE 11 — Project Visual           ->  12-project-visual/
+                                          MHVRA.jpeg, NDMA.png
 SLIDE 13 — SHINE                    ->  14-shine/
 SLIDE 14 — DLLS                     ->  15-dlls/
 SLIDE 15 — CLIM-13                  ->  16-clim-13/
