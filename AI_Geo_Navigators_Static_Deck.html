@@ -51,6 +51,9 @@
   --red:    #c1272d;
   --blue:   #4a7da6;        /* tertiary */
 
+  /* Cream / team text boxes — top stripe & matching icon ring */
+  --card-stripe: #1FA77A;
+
   --shadow: 0 8px 24px rgba(0, 0, 0, 0.30), 0 2px 6px rgba(0, 0, 0, 0.20);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.45);
 }
@@ -70,15 +73,72 @@
   --border: #d8cfbf;
   --border-cream: #d8cfbf;
 
-  --orange: #D45A2C;
-  --orange-soft: rgba(212, 90, 44, 0.14);
+  --orange: #FF7A1A;
+  --orange-soft: rgba(255, 122, 26, 0.14);
   --gold:   #C8881F;
-  --green:  #2e8b57;
+  --green:  #1FA77A;
+  --green-soft: rgba(31, 167, 122, 0.14);
   --red:    #c1272d;
-  --blue:   #1f4e79;
+  --blue:   #1FA77A;
+
+  --card-stripe: #1FA77A;
 
   --shadow: 0 8px 24px rgba(20, 30, 60, 0.08), 0 2px 6px rgba(20, 30, 60, 0.05);
   --shadow-lg: 0 16px 48px rgba(20, 30, 60, 0.14);
+}
+
+/* Light theme — expanded teal (#1FA77A via --green / --blue) */
+[data-theme="light"] .loader-ring { border-right-color: var(--green); }
+[data-theme="light"] .brand-text .b2 { color: var(--orange); }
+[data-theme="light"] .eyebrow { color: var(--green); }
+[data-theme="light"] .eyebrow::before { background: var(--green); }
+[data-theme="light"] .slide:not(.hero) .eyebrow { color: var(--green); }
+[data-theme="light"] .slide:not(.hero) .eyebrow::before { background: var(--green); }
+[data-theme="light"] .hero-eyebrow { color: var(--green); }
+[data-theme="light"] .hero-url { color: var(--green); }
+[data-theme="light"] .hero-desc .hl { color: var(--green); }
+/* Slide 1 hero (light): right panel with straight edges + orange→green blend */
+[data-theme="light"] .hero .hero-right {
+  background: linear-gradient(
+    152deg,
+    var(--orange) 0%,
+    #ff8f3a 26%,
+    #57be95 62%,
+    var(--green) 100%
+  );
+  border-bottom-left-radius: clamp(42px, 8vw, 96px);
+}
+[data-theme="light"] .hero .hero-title.accent { color: var(--green); }
+[data-theme="light"] .headline .accent { color: var(--green); }
+[data-theme="light"] .lede .hl { color: var(--green); }
+[data-theme="light"] .case-panel .panel-eyebrow { color: var(--green); }
+[data-theme="light"] .deck-kicker { color: var(--green); }
+[data-theme="light"] .final-eyebrow { color: var(--green); }
+[data-theme="light"] .contact-label { color: var(--green); }
+[data-theme="light"] .image-missing-hint code { color: var(--green); }
+[data-theme="light"] .step-row:nth-child(even) .step-num { color: var(--green); }
+[data-theme="light"] .stat-card:nth-child(even) .stat-value { color: var(--green); }
+[data-theme="light"] .slide-foot { border-top-color: rgba(31, 167, 122, 0.28); }
+[data-theme="light"] .controls { border-top-color: rgba(31, 167, 122, 0.22); }
+[data-theme="light"] .navbar { border-bottom-color: rgba(31, 167, 122, 0.22); }
+[data-theme="light"] .dot.active,
+[data-theme="light"] button.dot.active { background: var(--green); }
+[data-theme="light"] .deck-dash-carousel__dot--active { background: var(--green); }
+[data-theme="light"] .arrow-btn:hover:not(:disabled) {
+  background: var(--green);
+  color: #ffffff;
+  border-color: var(--green);
+}
+[data-theme="light"] .icon-btn:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: #ffffff;
+}
+[data-theme="light"] .slide::-webkit-scrollbar-thumb {
+  background: rgba(31, 167, 122, 0.38);
+}
+[data-theme="light"] .slide::-webkit-scrollbar-thumb:hover {
+  background: rgba(31, 167, 122, 0.52);
 }
 
 /* ============================================================
@@ -257,6 +317,403 @@ html, body {
   transform: translateX(0);
   pointer-events: auto;
 }
+.slide.bg-hero-split,
+.slide.bg-diagonal-energy,
+.slide.bg-corner-orbits,
+.slide.bg-data-grid,
+.slide.bg-map-pattern,
+.slide.bg-layered-cards,
+.slide.bg-bold-section {
+  isolation: isolate;
+}
+.slide.bg-hero-split::before,
+.slide.bg-hero-split::after,
+.slide.bg-diagonal-energy::before,
+.slide.bg-diagonal-energy::after,
+.slide.bg-corner-orbits::before,
+.slide.bg-corner-orbits::after,
+.slide.bg-data-grid::before,
+.slide.bg-data-grid::after,
+.slide.bg-map-pattern::before,
+.slide.bg-map-pattern::after,
+.slide.bg-layered-cards::before,
+.slide.bg-layered-cards::after,
+.slide.bg-bold-section::before,
+.slide.bg-bold-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.slide.bg-hero-split > *,
+.slide.bg-diagonal-energy > *,
+.slide.bg-corner-orbits > *,
+.slide.bg-data-grid > *,
+.slide.bg-map-pattern > *,
+.slide.bg-layered-cards > *,
+.slide.bg-bold-section > * {
+  position: relative;
+  z-index: 1;
+}
+.slide.bg-hero-split::before {
+  background:
+    linear-gradient(120deg, rgba(255, 122, 26, 0.22) 0%, rgba(255, 122, 26, 0.04) 38%, rgba(31, 167, 122, 0.16) 100%);
+  clip-path: polygon(56% 0, 100% 0, 100% 100%, 42% 100%);
+}
+.slide.bg-hero-split::after {
+  background:
+    linear-gradient(180deg, rgba(27, 42, 61, 0.10) 0%, rgba(27, 42, 61, 0.00) 72%);
+  clip-path: polygon(0 0, 18% 0, 9% 100%, 0 100%);
+}
+.slide.bg-diagonal-energy::before {
+  background:
+    linear-gradient(136deg, rgba(255, 122, 26, 0.20) 0%, rgba(255, 122, 26, 0.00) 62%);
+  clip-path: polygon(64% 0, 100% 0, 100% 70%, 48% 100%, 40% 80%);
+}
+.slide.bg-diagonal-energy::after {
+  background:
+    linear-gradient(136deg, rgba(31, 167, 122, 0.18) 0%, rgba(31, 167, 122, 0.00) 64%);
+  clip-path: polygon(0 56%, 32% 32%, 58% 100%, 0 100%);
+}
+.slide.bg-corner-orbits::before {
+  background:
+    radial-gradient(circle at 10% 86%, rgba(31, 167, 122, 0.22) 0 98px, rgba(31, 167, 122, 0.00) 99px),
+    radial-gradient(circle at 88% 12%, rgba(255, 122, 26, 0.16) 0 84px, rgba(255, 122, 26, 0.00) 85px),
+    radial-gradient(circle at 92% 82%, rgba(27, 42, 61, 0.10) 0 120px, rgba(27, 42, 61, 0.00) 121px);
+}
+.slide.bg-corner-orbits::after {
+  background-image:
+    radial-gradient(circle at 12% 86%, rgba(255, 255, 255, 0.34) 0 4px, transparent 5px),
+    radial-gradient(circle at 86% 14%, rgba(255, 255, 255, 0.30) 0 4px, transparent 5px);
+}
+.slide.bg-data-grid::before {
+  background-image:
+    linear-gradient(rgba(27, 42, 61, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 42, 61, 0.12) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.26;
+}
+.slide.bg-data-grid::after {
+  background:
+    linear-gradient(90deg, rgba(27, 42, 61, 0.15) 0%, rgba(27, 42, 61, 0.00) 24%),
+    linear-gradient(180deg, rgba(31, 167, 122, 0.14) 0%, rgba(31, 167, 122, 0.00) 56%);
+}
+.slide.bg-map-pattern::before {
+  background:
+    radial-gradient(74% 54% at 78% 82%, rgba(31, 167, 122, 0.12) 0%, rgba(31, 167, 122, 0.00) 100%),
+    radial-gradient(56% 44% at 16% 22%, rgba(255, 122, 26, 0.14) 0%, rgba(255, 122, 26, 0.00) 100%);
+}
+.slide.bg-map-pattern::after {
+  background-image:
+    linear-gradient(115deg, rgba(27, 42, 61, 0.10) 2px, transparent 2px),
+    linear-gradient(45deg, rgba(27, 42, 61, 0.06) 1px, transparent 1px);
+  background-size: 120px 120px, 32px 32px;
+  background-position: -20px 8px, 0 0;
+  opacity: 0.30;
+}
+.slide.bg-layered-cards::before {
+  background:
+    linear-gradient(0deg, rgba(27, 42, 61, 0.08), rgba(27, 42, 61, 0.08));
+  clip-path: polygon(7% 12%, 78% 12%, 74% 44%, 3% 44%);
+}
+.slide.bg-layered-cards::after {
+  background:
+    linear-gradient(0deg, rgba(255, 122, 26, 0.14), rgba(255, 122, 26, 0.14)),
+    linear-gradient(0deg, rgba(31, 167, 122, 0.13), rgba(31, 167, 122, 0.13));
+  clip-path: polygon(11% 16%, 82% 16%, 78% 48%, 7% 48%);
+  filter: drop-shadow(0 8px 18px rgba(27, 42, 61, 0.10));
+}
+.slide.bg-bold-section::before {
+  background:
+    linear-gradient(140deg, rgba(27, 42, 61, 0.22) 0%, rgba(27, 42, 61, 0.06) 42%, rgba(27, 42, 61, 0.00) 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 24%, 0 56%);
+}
+.slide.bg-bold-section::after {
+  background:
+    linear-gradient(118deg, rgba(255, 122, 26, 0.20) 0%, rgba(31, 167, 122, 0.18) 100%);
+  clip-path: polygon(0 76%, 100% 56%, 100% 100%, 0 100%);
+}
+
+/* ============================================================
+   5B) PREMIUM MOTION + AESTHETIC SYSTEM (PPT-like, restrained)
+============================================================ */
+.slides-wrapper { counter-reset: deckslide; }
+.slides-wrapper > .slide { counter-increment: deckslide; }
+
+/* Reusable motion primitives */
+.motion-fade-up { opacity: 0; transform: translateY(14px); }
+.motion-scale-soft { opacity: 0; transform: scale(0.97); }
+.motion-stagger > * { opacity: 0; transform: translateY(10px); }
+.slide.active .motion-fade-up { animation: motionFadeUp 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.slide.active .motion-scale-soft { animation: motionScaleSoft 760ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.slide.active .motion-stagger > * { animation: motionFadeUp 620ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.slide.active .motion-stagger > *:nth-child(1) { animation-delay: 90ms; }
+.slide.active .motion-stagger > *:nth-child(2) { animation-delay: 170ms; }
+.slide.active .motion-stagger > *:nth-child(3) { animation-delay: 250ms; }
+.slide.active .motion-stagger > *:nth-child(4) { animation-delay: 330ms; }
+.slide.active .motion-stagger > *:nth-child(5) { animation-delay: 410ms; }
+
+/* Reusable animated backgrounds */
+.slide.bg-animated-glow::before,
+.slide.bg-moving-grid::before,
+.slide.bg-floating-orbits::before,
+.slide.bg-data-flow::before,
+.slide.bg-premium-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.slide.bg-animated-glow::before {
+  background:
+    radial-gradient(42% 30% at 18% 20%, rgba(255, 122, 26, 0.16) 0%, rgba(255, 122, 26, 0) 100%),
+    radial-gradient(46% 32% at 82% 82%, rgba(31, 167, 122, 0.16) 0%, rgba(31, 167, 122, 0) 100%);
+  animation: bgDriftGlow 24s ease-in-out infinite alternate;
+}
+.slide.bg-moving-grid::before {
+  background-image:
+    linear-gradient(rgba(27, 42, 61, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 42, 61, 0.10) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.22;
+  animation: bgGridPan 28s linear infinite;
+}
+.slide.bg-floating-orbits::before {
+  background:
+    radial-gradient(circle at 14% 78%, rgba(31, 167, 122, 0.14) 0 92px, rgba(31, 167, 122, 0) 93px),
+    radial-gradient(circle at 86% 16%, rgba(255, 122, 26, 0.13) 0 84px, rgba(255, 122, 26, 0) 85px);
+  animation: bgOrbitFloat 18s ease-in-out infinite alternate;
+}
+.slide.bg-data-flow::before {
+  background:
+    linear-gradient(104deg, rgba(31, 167, 122, 0) 0%, rgba(31, 167, 122, 0.16) 42%, rgba(31, 167, 122, 0) 76%),
+    linear-gradient(104deg, rgba(255, 122, 26, 0) 0%, rgba(255, 122, 26, 0.13) 48%, rgba(255, 122, 26, 0) 84%);
+  background-size: 220% 220%, 220% 220%;
+  animation: bgDataFlow 22s linear infinite;
+}
+.slide.bg-premium-hero::before {
+  background:
+    linear-gradient(126deg, rgba(255, 122, 26, 0.18) 0%, rgba(255, 122, 26, 0.03) 40%, rgba(31, 167, 122, 0.14) 100%);
+  animation: bgPremiumHero 20s ease-in-out infinite alternate;
+}
+
+/* Slide entrance choreography (content only) */
+.slide .eyebrow,
+.slide .headline,
+.slide .hero-title-wrap,
+.slide .hero-tagline,
+.slide .hero-desc,
+.slide .hero-url {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.slide.active .eyebrow { animation: motionFadeUp 560ms ease-out both; animation-delay: 60ms; }
+.slide.active .headline,
+.slide.active .hero-title-wrap { animation: motionFadeUp 680ms ease-out both; animation-delay: 140ms; }
+.slide.active .hero-tagline,
+.slide.active .hero-desc,
+.slide.active .hero-url { animation: motionFadeUp 740ms ease-out both; animation-delay: 220ms; }
+
+.slide .cream-card,
+.slide .team-card,
+.slide .chart-card {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.slide.active .cream-card,
+.slide.active .team-card,
+.slide.active .chart-card { animation: motionFadeUp 640ms ease-out both; }
+.slide.active .cream-card:nth-of-type(1),
+.slide.active .team-card:nth-of-type(1),
+.slide.active .chart-card:nth-of-type(1) { animation-delay: 120ms; }
+.slide.active .cream-card:nth-of-type(2),
+.slide.active .team-card:nth-of-type(2),
+.slide.active .chart-card:nth-of-type(2) { animation-delay: 190ms; }
+.slide.active .cream-card:nth-of-type(3),
+.slide.active .team-card:nth-of-type(3),
+.slide.active .chart-card:nth-of-type(3) { animation-delay: 260ms; }
+.slide.active .cream-card:nth-of-type(4),
+.slide.active .team-card:nth-of-type(4),
+.slide.active .chart-card:nth-of-type(4) { animation-delay: 330ms; }
+
+.slide .slide-deck-img,
+.slide .hero-right-logo,
+.slide .impact-tile-img {
+  opacity: 0;
+  transform: scale(0.975);
+}
+.slide.active .slide-deck-img,
+.slide.active .hero-right-logo,
+.slide.active .impact-tile-img {
+  animation: motionScaleSoft 780ms ease-out both;
+  animation-delay: 260ms;
+}
+.slide .slide-foot { opacity: 0; transform: translateY(8px); }
+.slide.active .slide-foot { animation: motionFadeUp 580ms ease-out both; animation-delay: 420ms; }
+
+/* Premium depth + glass accents */
+.slide .cream-card,
+.slide .chart-card,
+.slide .team-card {
+  border: 1px solid rgba(27, 42, 61, 0.10);
+  box-shadow: 0 16px 36px rgba(27, 42, 61, 0.10), 0 4px 10px rgba(27, 42, 61, 0.06);
+}
+[data-theme="light"] .slide .cream-card::after,
+[data-theme="light"] .slide .chart-card::after,
+[data-theme="light"] .slide .team-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0));
+  z-index: 0;
+}
+
+/* Oversized transparent slide numbers for section dividers */
+.slide.slide-section-title .slide-body::before {
+  content: counter(deckslide, decimal-leading-zero);
+  position: absolute;
+  right: clamp(24px, 4vw, 54px);
+  bottom: clamp(10px, 2vh, 28px);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(120px, 18vw, 220px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: rgba(27, 42, 61, 0.10);
+  line-height: 0.8;
+  pointer-events: none;
+  z-index: 0;
+}
+.slide.slide-section-title .slide-body > * { position: relative; z-index: 1; }
+
+/* Section dividers: bold minimal + centered */
+.slide.slide-section-title .slide-body {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.slide.slide-section-title .eyebrow::after {
+  content: "SECTION";
+  margin-left: 12px;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: rgba(27, 42, 61, 0.55);
+}
+
+/* Product/dashboard slides: tech-demo polish */
+.slide-data-dash-2x2 .slide-image-slot,
+.slide .slide-inline-visual {
+  border-radius: 12px;
+  box-shadow: 0 22px 48px rgba(27, 42, 61, 0.18), 0 8px 18px rgba(27, 42, 61, 0.10);
+  overflow: hidden;
+}
+.slide-data-dash-2x2 .slide-image-slot::before,
+.slide .slide-inline-visual::before {
+  content: "";
+  position: absolute;
+  inset: -18% -12% auto -12%;
+  height: 42%;
+  background: radial-gradient(65% 100% at 50% 0, rgba(31, 167, 122, 0.20) 0%, rgba(31, 167, 122, 0) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+.slide-data-dash-2x2 .slide-inline-visual .slide-deck-img,
+.slide .slide-inline-visual .slide-deck-img {
+  filter: saturate(1.04) contrast(1.02);
+}
+
+/* Team/profile polish */
+.team-avatar {
+  box-shadow: 0 0 0 6px rgba(31, 167, 122, 0.10), 0 10px 24px rgba(27, 42, 61, 0.16);
+}
+.team-card {
+  padding-top: 30px;
+}
+.team-card::before {
+  content: "";
+  position: absolute;
+  inset: 10px 10px auto auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 122, 26, 0.48);
+}
+
+/* Contact/final polish */
+.slide-contact-slide .contact-strip {
+  padding: 12px 14px;
+  border: 1px solid rgba(27, 42, 61, 0.14);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.56);
+  box-shadow: 0 10px 22px rgba(27, 42, 61, 0.08);
+  backdrop-filter: blur(2px);
+}
+
+/* Technical labels */
+.slide.bg-data-grid .slide-body::after,
+.slide.bg-map-pattern .slide-body::after {
+  position: absolute;
+  top: 8px;
+  right: 6px;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(27, 42, 61, 0.42);
+  pointer-events: none;
+  z-index: 0;
+}
+.slide.bg-data-grid .slide-body::after { content: "AI GEO // DATA"; }
+.slide.bg-map-pattern .slide-body::after { content: "AI GEO // GEO"; }
+
+@keyframes motionFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes motionScaleSoft {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes bgDriftGlow {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(0, -10px, 0); }
+}
+@keyframes bgGridPan {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 0 40px, 40px 0; }
+}
+@keyframes bgOrbitFloat {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(10px, -8px, 0); }
+}
+@keyframes bgDataFlow {
+  0% { background-position: 0% 0%, 0% 0%; }
+  100% { background-position: 100% 0%, 100% 0%; }
+}
+@keyframes bgPremiumHero {
+  0% { filter: saturate(1); transform: translateY(0); }
+  100% { filter: saturate(1.06); transform: translateY(-8px); }
+}
+
+/* Controlled animation assignment to existing premium backgrounds */
+.slide.bg-hero-split { --bgMotion: bgPremiumHero 22s ease-in-out infinite alternate; }
+.slide.bg-diagonal-energy { --bgMotion: bgDataFlow 24s linear infinite; }
+.slide.bg-corner-orbits { --bgMotion: bgOrbitFloat 18s ease-in-out infinite alternate; }
+.slide.bg-data-grid { --bgMotion: bgGridPan 28s linear infinite; }
+.slide.bg-map-pattern { --bgMotion: bgGridPan 26s linear infinite; }
+.slide.bg-layered-cards { --bgMotion: bgDriftGlow 20s ease-in-out infinite alternate; }
+.slide.bg-bold-section { --bgMotion: bgDataFlow 26s linear infinite; }
+.slide[class*="bg-"]::before { animation: var(--bgMotion); }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .slide * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
 .slide-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -355,8 +812,19 @@ html, body {
   padding: 60px 50px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0;
   color: white;
+}
+.hero-right-pill-copy {
+  width: 100%;
+  max-width: 520px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 .hero-eyebrow {
   font-size: 11px;
@@ -416,20 +884,22 @@ html, body {
   font-size: 18px;
   line-height: 1.5;
   color: white;
+  margin: 0;
 }
-.hero-right-brand {
-  flex: 1;
+.hero-right-logo-wrap {
   display: flex;
-  align-items: center;
+  width: 100%;
   justify-content: center;
-  min-height: 120px;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 24px;
 }
-.hero-deck-logo {
+.hero-right-logo {
   width: auto;
-  max-width: min(300px, 88%);
-  max-height: 200px;
+  max-width: clamp(220px, 24vw, 340px);
+  max-height: clamp(140px, 21vh, 230px);
   object-fit: contain;
-  filter: drop-shadow(0 14px 36px rgba(0, 0, 0, 0.22));
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.2));
 }
 
 /* ============================================================
@@ -442,7 +912,7 @@ html, body {
   border-radius: 4px;
   padding: 28px 26px;
   position: relative;
-  border-top: 4px solid var(--orange);
+  border-top: 4px solid var(--card-stripe);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   display: flex;
   flex-direction: column;
@@ -480,7 +950,7 @@ html, body {
 .cream-card li { margin-bottom: 4px; }
 .cream-card .ico {
   width: 36px; height: 36px;
-  color: var(--orange);
+  color: var(--card-stripe);
   margin-bottom: 14px;
   display: flex;
   align-items: center;
@@ -493,7 +963,7 @@ html, body {
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: 4px;
-  border-left: 3px solid var(--orange);
+  border-left: 3px solid var(--card-stripe);
   padding: 24px;
   transition: transform 0.25s ease;
 }
@@ -510,15 +980,15 @@ html, body {
   color: var(--text-soft);
 }
 
-/* Section accent variants */
-.cream-card.gold-accent  { border-top-color: var(--gold); }
-.cream-card.gold-accent .ico { color: var(--gold); }
-.cream-card.green-accent { border-top-color: var(--green); }
-.cream-card.green-accent .ico { color: var(--green); }
-.cream-card.blue-accent  { border-top-color: var(--blue); }
-.cream-card.blue-accent .ico { color: var(--blue); }
-.cream-card.red-accent   { border-top-color: var(--red); }
-.cream-card.red-accent .ico { color: var(--red); }
+/* Section accent variants — unified to card stripe (#1FA77A) */
+.cream-card.gold-accent  { border-top-color: var(--card-stripe); }
+.cream-card.gold-accent .ico { color: var(--card-stripe); }
+.cream-card.green-accent { border-top-color: var(--card-stripe); }
+.cream-card.green-accent .ico { color: var(--card-stripe); }
+.cream-card.blue-accent  { border-top-color: var(--card-stripe); }
+.cream-card.blue-accent .ico { color: var(--card-stripe); }
+.cream-card.red-accent   { border-top-color: var(--card-stripe); }
+.cream-card.red-accent .ico { color: var(--card-stripe); }
 
 /* ============================================================
    8) GRIDS
@@ -542,7 +1012,7 @@ html, body {
   font-family: 'Playfair Display', serif;
   font-size: clamp(40px, 5vw, 64px);
   font-weight: 700;
-  color: var(--orange);
+  color: var(--card-stripe);
   line-height: 1;
   margin-bottom: 16px;
 }
@@ -568,7 +1038,7 @@ html, body {
 /* Highlighted financial-case panel (matches deck) */
 .case-panel {
   background: var(--bg-elev);
-  border-left: 4px solid var(--orange);
+  border-left: 4px solid var(--card-stripe);
   padding: 24px 28px;
   border-radius: 4px;
   margin-top: 18px;
@@ -587,7 +1057,7 @@ html, body {
   color: var(--text);
 }
 .case-panel .hl {
-  color: var(--orange);
+  color: var(--card-stripe);
   font-weight: 600;
 }
 
@@ -664,7 +1134,7 @@ html, body {
   padding: 24px 20px;
   border-radius: 4px;
   text-align: center;
-  border-top: 3px solid var(--orange);
+  border-top: 3px solid var(--card-stripe);
   transition: transform 0.25s ease;
 }
 .team-card:hover { transform: translateY(-3px); }
@@ -672,13 +1142,13 @@ html, body {
   width: 60px; height: 60px;
   border-radius: 50%;
   background: var(--bg);
-  color: var(--orange);
+  color: var(--card-stripe);
   display: flex; align-items: center; justify-content: center;
   font-family: 'Playfair Display', serif;
   font-size: 22px;
   font-weight: 700;
   margin: 0 auto 14px;
-  border: 2px solid var(--orange);
+  border: 2px solid var(--card-stripe);
 }
 .team-card h4 {
   font-family: 'Playfair Display', serif;
@@ -691,8 +1161,8 @@ html, body {
   color: var(--text-cream-soft);
   line-height: 1.4;
 }
-.team-card.gold .team-avatar { color: var(--gold); border-color: var(--gold); }
-.team-card.gold { border-top-color: var(--gold); }
+.team-card.gold .team-avatar { color: var(--card-stripe); border-color: var(--card-stripe); }
+.team-card.gold { border-top-color: var(--card-stripe); }
 
 /* ============================================================
    13) CHART CARDS
@@ -889,9 +1359,9 @@ html, body {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .hero { grid-template-columns: 1fr; }
   .hero-left { padding: 40px 32px 24px; }
-  .hero-right { padding: 32px; flex-direction: column; justify-content: flex-start; gap: 28px; }
-  .hero-right-brand { min-height: 0; padding: 8px 0; }
-  .hero-deck-logo { max-height: 160px; }
+  .hero-right { padding: 32px; flex-direction: column; justify-content: center; align-items: center; gap: 22px; }
+  .hero-right-pill-copy { width: min(100%, 540px); }
+  .hero-right-logo { max-height: 170px; }
   .final { grid-template-columns: 1fr; }
   .final-left { padding: 40px 32px 24px; }
   .final-right { padding: 40px 32px; }
@@ -940,39 +1410,13 @@ html, body {
 .slide.hero .hero-right {
   position: relative;
   justify-content: flex-start;
+  align-items: flex-start;
   padding-top: clamp(48px, 10vh, 100px);
-  padding-bottom: clamp(92px, 14vh, 140px);
-}
-.hero-corner-logo-wrap {
-  position: absolute;
-  left: 50%;
-  bottom: clamp(40px, 7.2vh, 100px);
-  top: auto;
-  right: auto;
-  transform: translateX(-50%);
-  z-index: 2;
-  pointer-events: none;
-}
-.hero-corner-logo {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: clamp(168px, 21vw, 232px);
-  max-height: clamp(104px, 15vh, 156px);
-  object-fit: contain;
-  border-radius: 0;
-  filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.2));
+  padding-bottom: clamp(70px, 12vh, 120px);
 }
 @media (max-width: 1000px) {
-  .slide.hero .hero-corner-logo-wrap {
-    bottom: clamp(32px, 6vh, 72px);
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .hero-corner-logo {
-    max-width: clamp(144px, 24vw, 196px);
-    max-height: clamp(96px, 16vh, 138px);
-  }
+  .hero-right-pill-copy { width: 100%; max-width: 100%; }
+  .hero-right-logo { max-width: clamp(190px, 38vw, 280px); }
 }
 /* Navbar + loader logo — square corners (no rounding on bg_rem_logo) */
 .navbar .brand img,
@@ -1308,6 +1752,11 @@ html, body {
   color: var(--orange);
   box-shadow: 0 4px 16px rgba(20, 30, 60, 0.1);
 }
+[data-theme="light"] .deck-dash-carousel__arrow:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 122, 26, 0.45);
+  color: var(--orange);
+}
 .deck-dash-carousel__chrome {
   display: flex;
   align-items: center;
@@ -1505,7 +1954,7 @@ html, body {
   font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--card-stripe);
   margin: 0 0 8px;
   font-weight: 700;
 }
@@ -1584,11 +2033,9 @@ button.dot.active { background: var(--orange); }
   height: clamp(200px, 38vh, 380px);
   position: relative;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.08);
+  /* Match cream-card top stripe; fills pillarbox gutters beside the photo */
+  background: var(--card-stripe);
   flex-shrink: 0;
-}
-[data-theme="light"] .impact-tile-fig {
-  background: rgba(27, 42, 61, 0.07);
 }
 .impact-tile-img {
   position: absolute;
@@ -1598,6 +2045,8 @@ button.dot.active { background: var(--orange); }
   object-fit: cover;
   object-position: center;
   display: block;
+  /* Mild zoom crops common baked-in letterboxing / frame in source assets */
+  transform: scale(1.065);
 }
 .impact-tile-cap {
   padding: 14px 14px 16px;
@@ -1609,7 +2058,7 @@ button.dot.active { background: var(--orange); }
   font-size: 15px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--card-stripe);
   font-family: 'Inter', sans-serif;
   font-weight: 700;
 }
@@ -1672,7 +2121,7 @@ button.dot.active { background: var(--orange); }
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--card-stripe);
   font-weight: 700;
   white-space: nowrap;
 }
@@ -1816,7 +2265,7 @@ button.dot.active { background: var(--orange); }
   
   
   
-<section class="slide active hero" data-title="Welcome">
+<section class="slide active hero bg-hero-split" data-title="Welcome">
     <div class="hero">
       <div class="hero-left">
         <div class="hero-eyebrow">COMPANY PRESENTATION&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
@@ -1831,17 +2280,17 @@ button.dot.active { background: var(--orange); }
         <p class="hero-url">aigeonavigators.com</p>
       </div>
       <div class="hero-right">
-        <div class="hero-corner-logo-wrap" aria-hidden="true">
+        <div class="hero-right-pill-copy">
+          <div class="pill-eyebrow">GEOSPATIAL · AI · CLIMATE</div>
+          <p class="pill-text">A climate-intelligence and geospatial firm transforming environmental data into decisions.</p>
+        </div>
+        <div class="hero-right-logo-wrap" aria-hidden="true">
           <img
-            class="hero-corner-logo"
+            class="hero-right-logo"
             src="deck-images/bg_rem_logo.png"
             alt=""
             onerror="if(!this.dataset._fb){this.dataset._fb='1';this.src='deck-images/ai_geo_logo.png';}else if(!this.dataset._fb2){this.dataset._fb2='1';this.src='deck-images/ai_geo_logo.jpg';}else{this.style.display='none';}"
           />
-        </div>
-        <div class="hero-right-pill-copy">
-          <div class="pill-eyebrow">GEOSPATIAL · AI · CLIMATE</div>
-          <p class="pill-text">A climate-intelligence and geospatial firm transforming environmental data into decisions.</p>
         </div>
       </div>
     </div>
@@ -1852,7 +2301,7 @@ button.dot.active { background: var(--orange); }
       </div>
   </section>
 
-<section class="slide" data-title="About us">
+<section class="slide bg-layered-cards" data-title="About us">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">02 — About us</div>
@@ -1883,7 +2332,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="Climate Impacts">
+<section class="slide bg-corner-orbits" data-title="Climate Impacts">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">03 — Climate Impacts</div>
@@ -1924,7 +2373,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide slide-section-title" data-title="Way Forward">
+<section class="slide slide-section-title bg-bold-section" data-title="Way Forward">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">04 — Way Forward</div>
@@ -1941,7 +2390,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide slide-gis6-visual" data-title="GIS &amp; Remote Sensing">
+<section class="slide slide-gis6-visual bg-map-pattern" data-title="GIS &amp; Remote Sensing">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">05 — GIS And Remote Sensing</div>
@@ -1966,7 +2415,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="Our Approach">
+<section class="slide bg-diagonal-energy" data-title="Our Approach">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">06 — Our Approach</div>
@@ -2005,7 +2454,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="Our Core Services">
+<section class="slide bg-layered-cards" data-title="Our Core Services">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">07 — Our Core Services</div>
@@ -2039,7 +2488,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide slide-section-title" data-title="Projects">
+<section class="slide slide-section-title bg-bold-section" data-title="Projects">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">08 — Projects</div>
@@ -2056,7 +2505,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide slide-projects-photo-align" data-title="Completed Projects">
+<section class="slide slide-projects-photo-align bg-layered-cards" data-title="Completed Projects">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">09 — Completed Projects</div>
@@ -2094,7 +2543,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide slide-projects-photo-align" data-title="Completed Projects(cont...)">
+<section class="slide slide-projects-photo-align bg-layered-cards" data-title="Completed Projects(cont...)">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">10 — Completed Projects(cont...)</div>
@@ -2132,7 +2581,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="Completed Projects(cont...)">
+<section class="slide bg-map-pattern" data-title="Completed Projects(cont...)">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">11 — Completed Projects(cont...)</div>
@@ -2161,7 +2610,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide slide-section-title" data-title="Innovations">
+<section class="slide slide-section-title bg-bold-section" data-title="Innovations">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">12 — Innovations</div>
@@ -2178,7 +2627,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="SHINE">
+<section class="slide bg-data-grid" data-title="SHINE">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">13 — SHINE</div>
@@ -2216,7 +2665,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="DLLS">
+<section class="slide bg-data-grid" data-title="DLLS">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">14 — DLLS</div>
@@ -2255,7 +2704,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="CLIM-13">
+<section class="slide bg-map-pattern" data-title="CLIM-13">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">15 — CLIM-13</div>
@@ -2293,7 +2742,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="AGILE">
+<section class="slide bg-data-grid" data-title="AGILE">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">16 — AGILE</div>
@@ -2332,7 +2781,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="RESIL-AI">
+<section class="slide bg-data-grid" data-title="RESIL-AI">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">17 — RESIL-AI</div>
@@ -2370,7 +2819,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="DBO">
+<section class="slide bg-map-pattern" data-title="DBO">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">18 — DBO</div>
@@ -2409,7 +2858,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide slide-section-title" data-title="SaaS Products">
+<section class="slide slide-section-title bg-bold-section" data-title="SaaS Products">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">19 — SaaS Products</div>
@@ -2426,7 +2875,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="FIRM">
+<section class="slide bg-data-grid" data-title="FIRM">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">20 — FIRM</div>
@@ -2466,7 +2915,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="AGRO AI">
+<section class="slide bg-map-pattern" data-title="AGRO AI">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">21 — AGRO AI</div>
@@ -2505,7 +2954,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="TAPASH">
+<section class="slide bg-data-grid" data-title="TAPASH">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">22 — TAPASH</div>
@@ -2544,7 +2993,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="ARID">
+<section class="slide bg-map-pattern" data-title="ARID">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">23 — ARID</div>
@@ -2583,7 +3032,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="DISTRICT RESILIENCE DASHBOARD">
+<section class="slide bg-data-grid" data-title="DISTRICT RESILIENCE DASHBOARD">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">24 — DISTRICT RESILIENCE DASHBOARD</div>
@@ -2622,7 +3071,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="ESG Calculator">
+<section class="slide bg-map-pattern" data-title="ESG Calculator">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">25 — ESG Calculator</div>
@@ -2661,7 +3110,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="Palm Solutions">
+<section class="slide bg-layered-cards" data-title="Palm Solutions">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">26 — Palm Solutions</div>
@@ -2697,7 +3146,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide slide-data-dash-2x2" data-title="Data &amp; Dashboards">
+<section class="slide slide-data-dash-2x2 bg-data-grid" data-title="Data &amp; Dashboards">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">27 — Data &amp; Dashboards</div>
@@ -2722,7 +3171,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="Tech Frontiers">
+<section class="slide bg-diagonal-energy" data-title="Tech Frontiers">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">28 — Tech Frontiers</div>
@@ -2760,7 +3209,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide" data-title="Presence">
+<section class="slide bg-corner-orbits" data-title="Presence">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">29 — Presence</div>
@@ -2779,7 +3228,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide slide-awards-slide" data-title="Awards">
+<section class="slide slide-awards-slide bg-layered-cards" data-title="Awards">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">30 — Awards</div>
@@ -2815,7 +3264,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide slide-contact-slide" data-title="Contact">
+<section class="slide slide-contact-slide bg-hero-split" data-title="Contact">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">31 — Contact</div>
@@ -2851,7 +3300,7 @@ button.dot.active { background: var(--orange); }
     </div>
   </section>
 
-<section class="slide thank-you-slide" data-title="Thank You">
+<section class="slide thank-you-slide bg-bold-section" data-title="Thank You">
     <div class="slide-inner">
       <div class="slide-body">
         <div class="eyebrow">32 — Thank You</div>
