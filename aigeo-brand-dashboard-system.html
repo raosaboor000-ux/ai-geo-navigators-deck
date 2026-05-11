@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Geo Navigators — Refined Brand & Dashboard System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --canvas:#FFFFFF;
+  --surface:#F7F5F0;
+  --sea:#1FA77A;
+  --sea-dark:#0E6E4F;
+  --orange:#FF7A1A;
+  --amber:#F4A300;
+  --charcoal:#0F1620;
+  --slate:#3A4654;
+  --slate-mute:#6B7889;
+  --mist:#E2E8F0;
+  --fog:#F1F5F9;
+  --chart-blue:#2E6FD8;
+  --chart-orange:#FF7A1A;
+  --display:'Manrope',sans-serif;
+  --body:'Inter',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--canvas);color:var(--charcoal);font-family:var(--body);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+.mono{font-family:var(--mono);font-feature-settings:"tnum","zero";}
+.display{font-family:var(--display);}
+
+.page{max-width:1280px;margin:0 auto;padding:48px 56px;}
+
+/* HEADER */
+.brand-bar{display:flex;align-items:center;gap:14px;padding-bottom:24px;border-bottom:1px solid var(--mist);}
+.brand-mark{width:44px;height:44px;border:2px solid var(--sea);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--sea);font-family:var(--display);font-weight:800;font-size:18px;}
+.brand-name{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-0.3px;}
+.brand-name span{color:var(--sea);}
+.brand-tag{font-size:13px;color:var(--slate-mute);margin-left:auto;font-weight:500;}
+
+/* SECTION */
+.section{margin-top:48px;}
+.section-eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--sea-dark);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+.section-title{font-family:var(--display);font-size:36px;font-weight:700;letter-spacing:-0.8px;line-height:1.15;color:var(--charcoal);margin-bottom:6px;}
+.section-title .accent-sea{color:var(--sea);}
+.section-title .accent-orange{color:var(--orange);}
+.section-sub{font-size:15px;color:var(--slate);max-width:640px;}
+
+/* PALETTE GRID */
+.palette{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;}
+.swatch{border-radius:10px;padding:18px;height:140px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--mist);}
+.swatch.dark{color:#fff;border:none;}
+.swatch.light{background:var(--canvas);}
+.swatch-name{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:0.5px;text-transform:uppercase;}
+.swatch-hex{font-family:var(--mono);font-size:13px;opacity:0.85;}
+.swatch-role{font-size:12px;font-weight:500;opacity:0.85;}
+
+/* TYPE SPECIMEN */
+.type-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:28px;}
+.type-card{background:var(--surface);border-radius:12px;padding:28px;border:1px solid var(--mist);}
+.type-label{font-family:var(--mono);font-size:10px;color:var(--sea-dark);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+.type-display{font-family:var(--display);font-weight:800;font-size:42px;line-height:1.05;letter-spacing:-1.2px;margin-bottom:8px;}
+.type-body{font-family:var(--body);font-size:15px;color:var(--slate);line-height:1.6;margin-bottom:14px;}
+.type-num{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--charcoal);}
+.weight-row{display:flex;gap:18px;font-family:var(--display);font-size:14px;color:var(--slate);margin-top:10px;}
+.weight-row span{padding:4px 10px;border:1px solid var(--mist);border-radius:6px;}
+
+/* DASHBOARD MOCK */
+.dash{background:var(--canvas);border:1px solid var(--mist);border-radius:14px;overflow:hidden;margin-top:28px;}
+.dash-head{padding:18px 22px;border-bottom:1px solid var(--mist);display:flex;align-items:center;justify-content:space-between;background:var(--surface);}
+.dash-head h3{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.2px;}
+.dash-head .meta{font-family:var(--mono);font-size:11px;color:var(--slate-mute);}
+.dash-body{padding:22px;}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px;}
+.kpi{background:var(--surface);border-radius:10px;padding:14px 16px;border:1px solid var(--mist);}
+.kpi-label{font-size:11px;color:var(--slate-mute);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:6px;}
+.kpi-val{font-family:var(--mono);font-size:26px;font-weight:600;letter-spacing:-0.5px;}
+.kpi-val.sea{color:var(--sea-dark);}
+.kpi-val.orange{color:var(--orange);}
+.kpi-val.charcoal{color:var(--charcoal);}
+.kpi-meta{font-family:var(--mono);font-size:11px;color:var(--slate-mute);margin-top:4px;}
+.kpi-meta.up{color:var(--orange);}
+.kpi-meta.down{color:var(--sea);}
+
+.chart-row{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;}
+.chart-card{background:var(--canvas);border:1px solid var(--mist);border-radius:10px;padding:16px;}
+.chart-title{font-family:var(--display);font-weight:600;font-size:13px;color:var(--charcoal);margin-bottom:4px;}
+.chart-sub{font-family:var(--mono);font-size:10px;color:var(--slate-mute);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
+.chart-wrap{position:relative;height:220px;}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--slate);margin-top:10px;}
+.legend-dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;}
+
+/* DECISION CARD */
+.signal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;}
+.signal{padding:14px 16px;border-radius:10px;border:1px solid var(--mist);background:var(--surface);}
+.signal.priority{border:1.5px solid var(--orange);background:#FFF6EE;}
+.signal-tag{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:8px;}
+.signal-tag.evidence{color:var(--sea-dark);}
+.signal-tag.action{color:var(--orange);}
+.signal-tag.structure{color:var(--slate);}
+.signal-val{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--charcoal);margin-bottom:4px;}
+.signal-desc{font-size:12px;color:var(--slate);line-height:1.5;}
+
+/* COMPARISON */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;}
+.compare-card{padding:20px;border-radius:12px;border:1px solid var(--mist);}
+.compare-card.bad{background:#FEF6F0;border-color:#F4D6BD;}
+.compare-card.good{background:#F0F9F4;border-color:#BFE4CC;}
+.compare-tag{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:10px;}
+.compare-card.bad .compare-tag{color:#A94B0E;}
+.compare-card.good .compare-tag{color:var(--sea-dark);}
+.compare-title{font-family:var(--display);font-weight:600;font-size:15px;margin-bottom:12px;}
+.color-strip{display:flex;height:40px;border-radius:6px;overflow:hidden;margin-bottom:10px;}
+.color-strip div{flex:1;}
+.compare-note{font-size:12px;color:var(--slate);line-height:1.55;}
+
+/* USAGE GUIDE */
+.guide-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:13px;}
+.guide-table th,.guide-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--mist);}
+.guide-table th{font-family:var(--display);font-weight:600;color:var(--slate);font-size:12px;letter-spacing:0.5px;text-transform:uppercase;background:var(--fog);}
+.guide-table td.role{font-family:var(--display);font-weight:600;}
+.guide-table td.hex{font-family:var(--mono);color:var(--slate);}
+.dot{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:8px;border:1px solid rgba(0,0,0,0.06);}
+
+footer{margin-top:64px;padding:24px 0;border-top:1px solid var(--mist);font-size:12px;color:var(--slate-mute);display:flex;justify-content:space-between;}
+footer .marks{font-family:var(--mono);letter-spacing:1.5px;color:var(--sea-dark);text-transform:uppercase;font-weight:500;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="brand-bar">
+    <div class="brand-mark">A</div>
+    <div>
+      <div class="brand-name">AI <span>GEO</span> NAVIGATORS</div>
+      <div style="font-size:12px;color:var(--slate-mute);">Brand & dashboard system · v2</div>
+    </div>
+    <div class="brand-tag">Climate intelligence · Confident decisions</div>
+  </div>
+
+  <!-- SECTION 1 — PALETTE -->
+  <section class="section">
+    <div class="section-eyebrow">01 · Colour</div>
+    <h2 class="section-title">Refined palette — <span class="accent-sea">brand</span> stays green, <span class="accent-orange">data</span> stays accessible.</h2>
+    <p class="section-sub">Sea green and orange anchor the brand. For chart and dashboard work, blue replaces secondary green so that 8% of users with red-green colour vision deficiency aren't stranded. Same identity, twice the accessibility.</p>
+
+    <div class="palette">
+      <div class="swatch light"><div><div class="swatch-name" style="color:var(--charcoal);">Canvas</div><div class="swatch-role" style="color:var(--slate-mute);">Page backgrounds</div></div><div class="swatch-hex" style="color:var(--slate);">#FFFFFF</div></div>
+      <div class="swatch dark" style="background:var(--sea);"><div><div class="swatch-name">Sea green</div><div class="swatch-role">Brand primary · CTAs</div></div><div class="swatch-hex">#1FA77A</div></div>
+      <div class="swatch dark" style="background:var(--sea-dark);"><div><div class="swatch-name">Forest</div><div class="swatch-role">Verification · success</div></div><div class="swatch-hex">#0E6E4F</div></div>
+      <div class="swatch dark" style="background:var(--orange);"><div><div class="swatch-name">Orange</div><div class="swatch-role">Decision signal</div></div><div class="swatch-hex">#FF7A1A</div></div>
+
+      <div class="swatch dark" style="background:var(--amber);"><div><div class="swatch-name">Amber</div><div class="swatch-role">Warning state</div></div><div class="swatch-hex">#F4A300</div></div>
+      <div class="swatch dark" style="background:var(--chart-blue);"><div><div class="swatch-name">Chart blue</div><div class="swatch-role">Data series 1 · CVD-safe</div></div><div class="swatch-hex">#2E6FD8</div></div>
+      <div class="swatch dark" style="background:var(--charcoal);"><div><div class="swatch-name">Charcoal</div><div class="swatch-role">Primary text</div></div><div class="swatch-hex">#0F1620</div></div>
+      <div class="swatch" style="background:var(--surface);color:var(--charcoal);"><div><div class="swatch-name">Surface</div><div class="swatch-role" style="color:var(--slate-mute);">Cards · separation</div></div><div class="swatch-hex" style="color:var(--slate);">#F7F5F0</div></div>
+    </div>
+
+    <table class="guide-table">
+      <thead><tr><th>Role</th><th>Use</th><th>Don't use for</th><th>Hex</th></tr></thead>
+      <tbody>
+        <tr><td class="role"><span class="dot" style="background:var(--sea);"></span>Sea green</td><td>Logo, primary CTAs, "verified evidence" badges, brand accents</td><td>Categorical chart colour against orange</td><td class="hex">#1FA77A</td></tr>
+        <tr><td class="role"><span class="dot" style="background:var(--sea-dark);"></span>Forest</td><td>Success states, verification icons, hover on sea green</td><td>Body text (insufficient contrast at small sizes)</td><td class="hex">#0E6E4F</td></tr>
+        <tr><td class="role"><span class="dot" style="background:var(--orange);"></span>Orange</td><td>Decision signal cards, high-priority alerts, single-use focus CTAs</td><td>Decoration, large fills, "fun" accents</td><td class="hex">#FF7A1A</td></tr>
+        <tr><td class="role"><span class="dot" style="background:var(--amber);"></span>Amber</td><td>Warning level (between normal and danger)</td><td>Same place as orange — they must mean different things</td><td class="hex">#F4A300</td></tr>
+        <tr><td class="role"><span class="dot" style="background:var(--chart-blue);"></span>Chart blue</td><td>Categorical series 1 in any chart with two or more series</td><td>UI buttons (reserved for data only)</td><td class="hex">#2E6FD8</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 2 — TYPE -->
+  <section class="section">
+    <div class="section-eyebrow">02 · Typography</div>
+    <h2 class="section-title">Manrope × Inter × JetBrains Mono.</h2>
+    <p class="section-sub">Manrope for headlines and brand voice. Inter for body, tables, and small UI. JetBrains Mono for every number that needs to align in a column. Three families, one identity.</p>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <div class="type-label">Display · Manrope</div>
+        <div class="type-display">Climate intelligence.</div>
+        <div class="type-body" style="font-family:var(--display);">Built for headlines, hero copy, and brand statements where character matters. Geometric construction with rounded humanist edges keeps it warm enough for climate and ESG audiences without losing precision.</div>
+        <div class="weight-row"><span>400</span><span>500</span><span>600</span><span>700</span><span style="background:var(--charcoal);color:#fff;border-color:var(--charcoal);">800</span></div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-label">Body · Inter</div>
+        <div class="type-display" style="font-family:var(--body);font-size:38px;font-weight:600;letter-spacing:-0.8px;">Confident decisions.</div>
+        <div class="type-body">Used by Figma, Linear, Stripe, Vercel. Designed specifically for screens with a tall x-height that stays readable down to 11 px. Use 400 for paragraphs, 500 for labels, 600 for table headers and emphasis.</div>
+        <div class="weight-row" style="font-family:var(--body);"><span>400</span><span>500</span><span style="background:var(--charcoal);color:#fff;border-color:var(--charcoal);">600</span><span>700</span></div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-label">Numerics · JetBrains Mono</div>
+        <div class="type-num" style="font-size:38px;line-height:1;">9.42 m · +0.84 · 1,420,000</div>
+        <div class="type-body" style="margin-top:18px;">Tabular figures align in columns. Non-negotiable for any table of numbers, KPI tile, or chart axis label. Without it, "1.42" and "1.21" don't sit on the same vertical and tables look amateur.</div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-label">Hierarchy in practice</div>
+        <div style="font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-0.7px;line-height:1.1;color:var(--charcoal);">From data to decisions.</div>
+        <div style="font-family:var(--display);font-weight:600;font-size:18px;color:var(--sea);margin-top:6px;">Verified evidence, prioritised action.</div>
+        <div class="type-body" style="margin-top:10px;">Body copy in Inter 14 px, line-height 1.55. Sub-content stays calm so headlines can carry weight.</div>
+        <div class="mono" style="font-size:13px;color:var(--slate);margin-top:8px;">DATA POINT · 1.37°C global anomaly</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — DASHBOARD APPLICATION -->
+  <section class="section">
+    <div class="section-eyebrow">03 · Application</div>
+    <h2 class="section-title">Brand <span class="accent-sea">colours</span> and dashboard <span class="accent-orange">colours</span> living together.</h2>
+    <p class="section-sub">Sea green powers the brand frame. Orange anchors the decision signal. The chart inside uses CVD-safe blue + orange so the data is readable for everyone.</p>
+
+    <div class="dash">
+      <div class="dash-head">
+        <h3>Coastal flood risk · Karachi & Sindh</h3>
+        <span class="meta">Updated 06 May 2026 · 23:14 PKT</span>
+      </div>
+      <div class="dash-body">
+        <div class="kpi-row">
+          <div class="kpi"><div class="kpi-label">Composite risk</div><div class="kpi-val orange">0.78</div><div class="kpi-meta up">▲ 18% vs 12 mo</div></div>
+          <div class="kpi"><div class="kpi-label">Population at risk</div><div class="kpi-val charcoal">1.42<span style="font-size:14px;color:var(--slate-mute);font-weight:500;"> M</span></div><div class="kpi-meta">5 districts</div></div>
+          <div class="kpi"><div class="kpi-label">Verified data points</div><div class="kpi-val sea">10.2<span style="font-size:14px;color:var(--slate-mute);font-weight:500;"> B</span></div><div class="kpi-meta down">Reliability 98%</div></div>
+          <div class="kpi"><div class="kpi-label">Forecast horizon</div><div class="kpi-val charcoal">2050</div><div class="kpi-meta">1.5°C path</div></div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-card">
+            <div class="chart-title">Risk trajectory · current vs adaptation pathway</div>
+            <div class="chart-sub">Coastal flood risk score · 2020 → 2050</div>
+            <div class="chart-wrap"><canvas id="risk"></canvas></div>
+            <div class="legend">
+              <span><span class="legend-dot" style="background:var(--chart-blue);"></span>Current path</span>
+              <span><span class="legend-dot" style="background:var(--chart-orange);"></span>1.5°C pathway</span>
+              <span><span class="legend-dot" style="background:var(--slate);"></span>Adaptation path</span>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-title">Decision signals</div>
+            <div class="chart-sub">Live priority · 06 May</div>
+            <div class="signal-grid" style="grid-template-columns:1fr;gap:10px;margin-top:0;">
+              <div class="signal priority">
+                <div class="signal-tag action">▲ High priority</div>
+                <div class="signal-val" style="color:var(--orange);">0.78</div>
+                <div class="signal-desc">Coastal flood risk increasing faster than baseline. Recommend adaptive infrastructure investment in high-exposure zones.</div>
+              </div>
+              <div class="signal">
+                <div class="signal-tag evidence">● Verified</div>
+                <div class="signal-val" style="color:var(--sea-dark);">98%</div>
+                <div class="signal-desc">Reliability across 10.2 B data points. ERA5 + Sentinel-1 cross-validated.</div>
+              </div>
+              <div class="signal">
+                <div class="signal-tag structure">▣ Structure</div>
+                <div class="signal-val">42</div>
+                <div class="signal-desc">Active models across 4 climate domains.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 — COMPARISON -->
+  <section class="section">
+    <div class="section-eyebrow">04 · Why the change</div>
+    <h2 class="section-title">Same brand. Better data.</h2>
+    <p class="section-sub">The original three-green palette looks great in marketing screens. In a chart with two series, it fails 8% of viewers. The fix is small: one of the greens becomes blue when it's encoding data.</p>
+
+    <div class="compare">
+      <div class="compare-card bad">
+        <div class="compare-tag">⚠ Original — green + green + orange</div>
+        <div class="compare-title">For someone with deuteranopia, sea green and forest collapse together.</div>
+        <div class="color-strip">
+          <div style="background:#1FA77A;"></div>
+          <div style="background:#0E6E4F;"></div>
+          <div style="background:#FF7A1A;"></div>
+        </div>
+        <div class="color-strip" style="filter:url(#deuteranopia);">
+          <div style="background:#1FA77A;"></div>
+          <div style="background:#0E6E4F;"></div>
+          <div style="background:#FF7A1A;"></div>
+        </div>
+        <div class="compare-note"><strong>Top:</strong> normal vision. <strong>Bottom:</strong> simulated deuteranopia. The two greens become near-identical olives.</div>
+      </div>
+
+      <div class="compare-card good">
+        <div class="compare-tag">✓ Refined — blue + green + orange (data) </div>
+        <div class="compare-title">Blue replaces one green when it's used as a data series colour.</div>
+        <div class="color-strip">
+          <div style="background:#2E6FD8;"></div>
+          <div style="background:#0E6E4F;"></div>
+          <div style="background:#FF7A1A;"></div>
+        </div>
+        <div class="color-strip" style="filter:url(#deuteranopia);">
+          <div style="background:#2E6FD8;"></div>
+          <div style="background:#0E6E4F;"></div>
+          <div style="background:#FF7A1A;"></div>
+        </div>
+        <div class="compare-note"><strong>Top:</strong> normal vision. <strong>Bottom:</strong> simulated deuteranopia. All three series remain distinct.</div>
+      </div>
+    </div>
+
+    <!-- SVG filters for CVD simulation -->
+    <svg style="position:absolute;width:0;height:0;">
+      <filter id="deuteranopia">
+        <feColorMatrix type="matrix" values="
+          0.367  0.861 -0.228 0 0
+          0.280  0.673  0.047 0 0
+         -0.012  0.043  0.969 0 0
+          0      0      0     1 0"/>
+      </filter>
+    </svg>
+  </section>
+
+  <footer>
+    <span>AI Geo Navigators · brand & dashboard system v2</span>
+    <span class="marks">STRUCTURE · EVIDENCE · SIGNAL · IMPACT</span>
+  </footer>
+
+</div>
+
+<script>
+/* ----- chart ----- */
+const years = [2020,2025,2030,2035,2040,2045,2050];
+const ctx = document.getElementById('risk').getContext('2d');
+new Chart(ctx,{
+  type:'line',
+  data:{
+    labels:years,
+    datasets:[
+      {label:'Current path',data:[28,38,52,60,68,74,80],borderColor:'#2E6FD8',backgroundColor:'rgba(46,111,216,0.08)',borderWidth:2.5,tension:0.35,fill:true,pointRadius:0,pointHoverRadius:5},
+      {label:'1.5°C pathway',data:[28,32,34,32,28,22,15],borderColor:'#FF7A1A',backgroundColor:'transparent',borderWidth:2.5,borderDash:[5,4],tension:0.35,pointRadius:0},
+      {label:'Adaptation path',data:[28,34,42,44,43,41,40],borderColor:'#3A4654',backgroundColor:'transparent',borderWidth:2,borderDash:[2,3],tension:0.35,pointRadius:0}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{
+      legend:{display:false},
+      tooltip:{
+        backgroundColor:'#0F1620',titleColor:'#fff',bodyColor:'#E2E8F0',
+        titleFont:{family:'JetBrains Mono',size:11},bodyFont:{family:'JetBrains Mono',size:11},
+        borderColor:'#3A4654',borderWidth:1,padding:10,cornerRadius:6,displayColors:true
+      }
+    },
+    scales:{
+      x:{grid:{display:false},ticks:{color:'#6B7889',font:{family:'JetBrains Mono',size:11}},border:{color:'#E2E8F0'}},
+      y:{grid:{color:'#F1F5F9'},ticks:{color:'#6B7889',font:{family:'JetBrains Mono',size:11},stepSize:20},border:{display:false},suggestedMin:0,suggestedMax:90}
+    }
+  }
+});
+</script>
+</body>
+</html>
