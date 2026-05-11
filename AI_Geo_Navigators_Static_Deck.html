@@ -87,7 +87,7 @@
   --shadow-lg: 0 16px 48px rgba(20, 30, 60, 0.14);
 }
 
-/* Light theme — accent copy & stripes use orange (#FF7A1A); teal kept for hero panel & photo gutters */
+/* Light theme — accent copy, stripes, and slide 1 hero right panel use orange (#FF7A1A); teal/green on select decorative slides */
 [data-theme="light"] .loader-ring { border-right-color: var(--orange); }
 [data-theme="light"] .brand-text .b2 { color: var(--orange); }
 [data-theme="light"] .eyebrow { color: var(--orange); }
@@ -97,19 +97,19 @@
 [data-theme="light"] .hero-eyebrow { color: var(--orange); }
 [data-theme="light"] .hero-url { color: var(--orange); }
 [data-theme="light"] .hero-desc .hl { color: var(--orange); }
-/* Slide 1 hero (light): right panel — teal → very light teal (same hue family) */
+/* Slide 1 hero (light): right panel — brand orange → soft peach (same structure as former teal ramp) */
 [data-theme="light"] .hero .hero-right {
   background: linear-gradient(
     180deg,
-    var(--green) 0%,
-    #2d9f7e 6%,
-    #3fa88a 14%,
-    #5cb39a 28%,
-    #7fc4ae 44%,
-    #a8d6c6 58%,
-    #cde8dd 76%,
-    #e6f4ef 92%,
-    #f0f9f6 100%
+    #e8680c 0%,
+    var(--orange) 6%,
+    #ff8c38 14%,
+    #ffa04d 28%,
+    #ffb870 44%,
+    #ffd099 58%,
+    #ffe4c2 76%,
+    #fff0df 92%,
+    #fff6ea 100%
   );
   border-bottom-left-radius: clamp(42px, 8vw, 96px);
 }
